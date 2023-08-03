@@ -164,7 +164,7 @@ class RosBot(Supervisor):
     def sensor_calibration(self):
         while self.experiment_supervisor.step(self.timestep) != -1:
             break
-
+    # Returns the robots current x, y GPS readings and current compass reading
     def get_robot_pose(self):
         current_pose = self.gps.getValues()
         return current_pose[0], current_pose[1], self.get_bearing()
@@ -290,6 +290,7 @@ class RosBot(Supervisor):
         motion_vector = self.calculate_robot_motion_vector(x,y)
         self.move_forward(motion_vector[1])
 
+    # This function is to preform a quick test if the robot's systes are operational
     def preform_random_action(self):
         random_action = randint(0, 7)
         print(random_action)
@@ -301,6 +302,7 @@ class RosBot(Supervisor):
         else:
             print("cant preform action")
 
+    # Prefroms one of the 8 allocentric actions from the action_set dictionary
     def preform_action(self,action_index):
         action = action_set.get(action_index)
         self.rotate_to(action[0])
@@ -308,7 +310,7 @@ class RosBot(Supervisor):
 
 
     # Supervisor Functions: allows robot to control the simulation
-
+    # DO NOT MODIFY: unless you are attempting to manipulate the webots world simulations!!!
 
     # Takes in a xml maze file and creates the walls, starting locations, and goal locations
     def load_environment(self,maze_file):
@@ -331,7 +333,6 @@ class RosBot(Supervisor):
     def move_to_random_start(self):
         starting_position = self.maze.get_random_starting_position()
         self.teleport_robot(starting_position.x,starting_position.y)
-
 
     # Plots Place cells and shows them on the Display
     def update_display(self):
