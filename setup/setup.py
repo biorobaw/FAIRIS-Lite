@@ -13,14 +13,6 @@ if platform.system() == 'Windows':
 		print("User may need to set up python vevn sepratly")
 		sys.exit()
 
-	project_path = os.getcwd()
-	print(project_path)
-	file_to_add_site_packages = "venv/Lib/site-packages/FAIRIS_LIBS.pth"
-
-	line_to_write = project_path
-
-	with open(file_to_add_site_packages, "w") as out_file:
-		out_file.write(line_to_write)
 	subprocess.run(["setup\\windows_venv_setup.bat"])
 else:
 	try:
@@ -30,16 +22,18 @@ else:
 		print("User may need to set up python vevn sepratly")
 		sys.exit()
 
-	project_path = os.getcwd()
-	print(project_path)
-	file_to_add_site_packages = "venv/lib/python3.9/site-packages/FAIRIS_LIBS.pth"
-
-	line_to_write = project_path
-
-	with open(file_to_add_site_packages, "w") as out_file:
-		out_file.write(line_to_write)
-	os.system("sudo chmod +x setup/unix_venv_setup.sh")
 	subprocess.run(["setup/unix_venv_setup.sh"], shell=True)
 
+project_path = os.getcwd()
+print(project_path)
+file_to_add_site_packages = "venv/lib/python3.9/site-packages/FAIRIS_LIBS.pth"
+
+line_to_write = project_path
+
+with open(file_to_add_site_packages, "w") as out_file:
+	out_file.write(line_to_write)
+os.system("sudo chmod +x setup/unix_venv_setup.sh")
 
 
+
+sys.exit()

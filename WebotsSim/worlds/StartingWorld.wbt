@@ -6,7 +6,7 @@ IMPORTABLE EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R20
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/devices/orbbec/protos/Astra.proto"
 IMPORTABLE EXTERNPROTO "../protos/Obstical.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
-IMPORTABLE EXTERNPROTO "../protos/ROSbot_Lidar.proto"
+EXTERNPROTO "../protos/ROSbot_Lidar.proto"
 
 WorldInfo {
 }
@@ -39,7 +39,7 @@ DEF Agent Rosbot {
     }
   ]
   lidarSlot [
-    ROSBOT_Lidar {
+    ROSbot_Lidar {
       name "lidar"
     }
     GPS {
