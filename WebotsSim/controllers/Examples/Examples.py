@@ -5,7 +5,7 @@ os.chdir("../..")
 from WebotsSim.libraries.RosBot import RosBot
 
 
-maze_file = 'worlds/mazes/experiment2/WM20.xml'
+maze_file = 'worlds/mazes/samples/WM20.xml'
 
 # create the robot/supervisor instance.
 robot = RosBot()
