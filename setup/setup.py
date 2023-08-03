@@ -21,7 +21,7 @@ if platform.system() == 'Windows':
 
 	with open(file_to_add_site_packages, "w") as out_file:
 		out_file.write(line_to_write)
-	subprocess.run(["setup/windows_venv_setup.bat"])
+	subprocess.run(["setup\\windows_venv_setup.bat"])
 else:
 	try:
 		os.system("python3 -m venv venv")
