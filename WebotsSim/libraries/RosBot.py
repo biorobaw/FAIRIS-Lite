@@ -340,8 +340,8 @@ class RosBot(Supervisor):
                                layout='constrained')
         fig.suptitle('Figure')
         ax.set_title('Axes', loc='left', fontstyle='oblique', fontsize='medium')
-        fig.savefig('DataCache/temp.png')
+        fig.savefig('DisplayCache/temp.png')
         while self.experiment_supervisor.step(self.timestep) != -1:
-            ir = self.display.imageLoad('DataCache/temp.png')
+            ir = self.display.imageLoad('DisplayCache/temp.png')
             self.display.imagePaste(ir, 0, 0, True)
             break
