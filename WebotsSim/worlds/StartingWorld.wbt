@@ -6,6 +6,7 @@ IMPORTABLE EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R20
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/devices/orbbec/protos/Astra.proto"
 IMPORTABLE EXTERNPROTO "../protos/Obstical.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
+IMPORTABLE EXTERNPROTO "../protos/ROSbot_Lidar.proto"
 EXTERNPROTO "../protos/ROSbot_Lidar.proto"
 
 WorldInfo {
@@ -26,7 +27,7 @@ Floor {
 DEF Agent Rosbot {
   translation 3.068860920170147e-12 -1.3155904555854636e-09 -0.000562585249692632
   rotation -1.584138066379736e-05 1.596003898658653e-05 0.9999999997471639 1.5700000002428123
-  controller "<extern>"
+  controller "Examples"
   supervisor TRUE
   cameraSlot [
     Astra {
@@ -39,7 +40,7 @@ DEF Agent Rosbot {
     }
   ]
   lidarSlot [
-    ROSbot_Lidar {
+    ROSBOT_Lidar {
       name "lidar"
     }
     GPS {
