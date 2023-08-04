@@ -39,20 +39,25 @@ else:
 
 	project_path = os.getcwd()
 	print(project_path)
-	file_to_add_site_packages = "venv/lib/python3.9/site-packages/FAIRIS_LIBS.pth"
+	for ver in [9,10,11]:
+		try:
+			file_to_add_site_packages = "venv/lib/python3."+str(ver)+"/site-packages/FAIRIS_LIBS.pth"
+			line_to_write = project_path
 
-	line_to_write = project_path
+			with open(file_to_add_site_packages, "w") as out_file:
+				out_file.write(line_to_write)
+		except:
+			pass
 
-	with open(file_to_add_site_packages, "w") as out_file:
-		out_file.write(line_to_write)
 	os.system("sudo chmod +x setup/unix_venv_setup.sh")
 	subprocess.run(["setup/unix_venv_setup.sh"], shell=True)
 
 
 	runtime_ini_file = "WebotsSim/controllers/Examples/runtime.ini"
-	path_to_python_venv = project_path + "/venv/bin/python3.9"
+	path_to_python_venv = project_path + "/venv/bin/python3"
 	with open(runtime_ini_file, "w") as out_file:
 		out_file.write("[python]\n")
 		out_file.write("COMMAND = " + path_to_python_venv)
 
+print("FAIRIS-Lite has successfully been setup!")
 sys.exit()
