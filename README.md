@@ -1,60 +1,70 @@
 # FAIRIS-Lite
-This repo is a project framework that allows people to directly implement navigational control logic on the open source robotic simulation  (Webots). This framework enables users to create their on webots controller without the need to set up a simulated environment or robot with in webots, as we provide all the materials needed to get started.
 
-# Requirements
+FAIRIS-Lite is a project framework that allows you to implement navigational control logic directly on the open-source robotic simulation platform Webots. With this framework, you can create your own Webots controller without the need to set up a simulated environment or robot, as we provide all the materials required to get started.
 
-FAIRIS-Lite is built with the intention of developing robot controllers in python. As such, your system will require Python3.9+. If your system does not have python3.9 or above installed on your, you will need to do so. A guided tutorial on how to install or update Python is provided here: [install](https://realpython.com/installing-python/) or [update](https://www.pythoncentral.io/how-to-update-python/).
+## Requirements
 
-FAIRIS_Lite works in conjunction with Cyberbotics's Webots and supports version R2023b. You will need to install this open-source software inorder to utilize FAIRIS-Lite. A guided instalation guide can be found [here](https://cyberbotics.com/doc/guide/installation-procedure).
+To work with FAIRIS-Lite, ensure that your system meets the following requirements:
 
-# Setup Instructions
+1. Python 3.9+: If you don't have Python 3.9 or above installed, you can find a guided tutorial on how to install or update Python [here](https://realpython.com/installing-python/) or [here](https://www.pythoncentral.io/how-to-update-python/).
 
-Once you you have ensured that your system meets the needed requirements, you will need to clone this repo onto your device. Once FAIRIS-Lite is on your local machine you will need to open a terminal session (om MacOS or Linux) or a command shell (Windows).
+2. Cyberbotics Webots R2023b: FAIRIS-Lite works in conjunction with Webots version R2023b. You need to install this open-source software to utilize FAIRIS-Lite. A guided installation guide can be found [here](https://cyberbotics.com/doc/guide/installation-procedure).
 
-## Launching terminal on MacOS
+## Setup Instructions
 
-1. Press Command + Space Bar on your Mac keyboard (alternatively, press F4)
-2. Type in “Terminal”
-3. When you see Terminal in the Spotlight search list, click it to open the app.
+Follow these steps to set up FAIRIS-Lite on your local machine:
 
-## Launching terminal on Linux
+1. Clone this repository onto your device.
+2. Open a terminal session (on MacOS or Linux) or a command shell (on Windows).
 
-1. Pressing Ctrl+Alt+T will instantly launch a Terminal window at any moment. The GNOME Terminal window will immediately appear.
+### Launching Terminal on MacOS
 
-## Launching command sheel on Windows
+1. Press Command + Space Bar on your Mac keyboard (alternatively, press F4).
+2. Type "Terminal" in the Spotlight search and click to open the app.
 
-1. Press the Windows Key + R, type in cmd.exe, and press Enter.
+### Launching Terminal on Linux
 
-![RUN.](https://www.majorgeeks.com/content/file/4355_ways%20to%20open%20the%20command%20prompt%20in%20windows%2011%201.jpg)
+1. Press Ctrl+Alt+T to instantly launch a Terminal window.
 
-## Setup commands
+### Launching Command Prompt on Windows
 
-Once in a terminal session or command shell, you will need to run the command listed below. Note, You may be required to type your user password to enable permissions to executable files. 
+1. Press the Windows Key + R, type in `cmd.exe`, and press Enter.
 
-### MacOS and Lunix
+![Run](https://www.majorgeeks.com/content/file/4355_ways%20to%20open%20the%20command%20prompt%20in%20windows%2011%201.jpg)
+
+Once in the terminal session or command shell, navigate to the `setup` directory and run the following commands:
+
+### MacOS and Linux
 ```shell
 foo@bar: FAIRIS-Lite $ cd setup
 foo@bar: setup $ python3 setup.py
-
 ```
 
 ### Windows
 ```shell
 foo@bar: FAIRIS-Lite $ cd setup
 foo@bar: setup $ python setup.py
-
 ```
 
-Running the the python script setup.py, a python virtual environment, called venv, will be created as well installing all of the needed python libraries to run FAIRIS-Lite. This script will also configre Webots so that all additional libraries created by the user can be imported and utilized by webots. 
+Running the `setup.py` script will create a Python virtual environment (venv) and install all the necessary Python libraries to run FAIRIS-Lite. The script will also configure Webots so that any additional libraries created by the user can be imported and utilized.
 
-# PyCharm Support
+## PyCharm Support
 
-FAIRIS-Lite supports PyCharm integration with Webots. To set this up you will need to open the FAIRIS-Lite directory as a project in PyCharm and add the content roots as the FAIRIS-Lite directory. You will also need to set the Python interprature to be the venv created  in the steps above.
+FAIRIS-Lite offers PyCharm integration with Webots. To set this up, follow these steps:
 
-Finally, you will also need to configure PyCharm in integrate with Webots. A detailed guide can be found [here](https://cyberbotics.com/doc/guide/using-your-ide#pycharm).
+1. Open the FAIRIS-Lite directory as a project in PyCharm.
+2. Add the content roots as the FAIRIS-Lite directory.
+3. Set the Python interpreter to be the venv created in the previous steps.
 
-# Testing FAIRIS-Lite setup
+For detailed instructions on configuring PyCharm to integrate with Webots, refer to the [guide](https://cyberbotics.com/doc/guide/using-your-ide#pycharm).
 
-To test if FAIRIS-Lite has been setup properly, you will need to launch Webots and open the world file located in FAIRIS-Lite -> WebotsSim -> worlds -> StartingWorld.wbt. Once Webots loads the world you should see that the Example controller is running, which will add walls and place the robot is a location to start at. The robot should them preform 8 actions, after which the simulation will reset. By selecting the play button on the Webots interface you will see this process repeat. 
+## Testing FAIRIS-Lite Setup
 
+To test if FAIRIS-Lite has been set up properly, follow these steps:
 
+1. Launch Webots and open the world file located in `FAIRIS-Lite -> WebotsSim -> worlds -> StartingWorld.wbt`.
+2. Once Webots loads the world, you should see the Example controller running, which adds walls and places the robot in a starting location.
+3. The robot will perform 8 actions, after which the simulation will reset.
+4. By selecting the play button on the Webots interface, you will see this process repeat.
+
+Now you have successfully set up FAIRIS-Lite, and you can start developing your robot controllers in Webots using Python. Happy coding!
