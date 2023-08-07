@@ -40,7 +40,7 @@ DEF Agent Rosbot {
     }
   ]
   lidarSlot [
-    ROSBOT_Lidar {
+    ROSbot_Lidar {
       name "lidar"
     }
     GPS {
