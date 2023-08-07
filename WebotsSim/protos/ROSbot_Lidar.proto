@@ -58,15 +58,15 @@ PROTO ROSBOT_Lidar [
       density -1
       mass 0.2
     }
-    fieldOfView 1.57
+    fieldOfView 6.28
     horizontalResolution 800
     numberOfLayers 1
-    near 0.05
-    minRange 0.10000
+    near 0.04
+    minRange 0.090000
     maxRange 12.000000
     noise 0.000833
     resolution 0.010000
-    type "rotating"
+    type "fixed"
     rotatingHead Solid{
       translation 0.000000 0.000000 -0.0314
       children [
