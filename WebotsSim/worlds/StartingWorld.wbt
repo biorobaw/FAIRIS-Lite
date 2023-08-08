@@ -4,16 +4,16 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 IMPORTABLE EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/husarion/rosbot/protos/Rosbot.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/devices/orbbec/protos/Astra.proto"
-IMPORTABLE EXTERNPROTO "../protos/Obstical.proto"
+IMPORTABLE EXTERNPROTO "../protos/WorldObjects/Obstical.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
-IMPORTABLE EXTERNPROTO "../protos/ROSbot_Lidar.proto"
-EXTERNPROTO "../protos/ROSbot_Lidar.proto"
+IMPORTABLE EXTERNPROTO "../protos/ROSbot/ROSbot_Lidar.proto"
+EXTERNPROTO "../protos/ROSbot/ROSbot_Lidar.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.5773502691896257 0.5773502691896257 0.5773502691896257 2.0943245915045035
-  position -0.0003892143406338371 -0.0003891984962430382 14.165933751654169
+  orientation -0.5773483729639887 0.5773487070940025 0.5773537274953012 2.094325684440625
+  position -0.00038921434063343696 -0.00038919849624308167 14.165933751654169
 }
 TexturedBackground {
 }
@@ -31,6 +31,7 @@ DEF Agent Rosbot {
   supervisor TRUE
   cameraSlot [
     Astra {
+      translation 0.04 0 -0.065
       name "camera"
     }
     Display {
@@ -40,7 +41,8 @@ DEF Agent Rosbot {
     }
   ]
   lidarSlot [
-    ROSbot_Lidar {
+    ROSBOT_Lidar {
+      translation -0.02 0 0.096
       name "lidar"
     }
     GPS {
