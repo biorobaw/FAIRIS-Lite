@@ -41,7 +41,7 @@ DEF Agent Rosbot {
     }
   ]
   lidarSlot [
-    ROSBOT_Lidar {
+    ROSbot_Lidar {
       translation -0.02 0 0.096
       name "lidar"
     }
