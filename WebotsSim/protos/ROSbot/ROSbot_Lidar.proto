@@ -6,7 +6,7 @@
 
 IMPORTABLE EXTERNPROTO "appearances/MattePaint.proto"
 
-PROTO ROSBOT_Lidar [
+PROTO ROSbot_Lidar [
   field SFVec3f    translation   0 0 0.031
   field SFRotation rotation      0 0 1 0
   field SFString   name          "ROSbot_Lidar"

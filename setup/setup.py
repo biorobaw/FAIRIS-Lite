@@ -23,7 +23,7 @@ if platform.system() == 'Windows':
 		out_file.write(line_to_write)
 	subprocess.run(["setup\\windows_venv_setup.bat"])
 
-	runtime_ini_file = "WebotsSim/controllers/Examples/runtime.ini"
+	runtime_ini_file = "WebotsSim/controllers/Template/runtime.ini"
 	path_to_python_venv = project_path + "/venv/Scripts/python.exe"
 	with open(runtime_ini_file, "w") as out_file:
 		out_file.write("[python]\n")
@@ -53,7 +53,7 @@ else:
 	subprocess.run(["setup/unix_venv_setup.sh"], shell=True)
 
 
-	runtime_ini_file = "WebotsSim/controllers/Examples/runtime.ini"
+	runtime_ini_file = "WebotsSim/controllers/Template/runtime.ini"
 	path_to_python_venv = project_path + "/venv/bin/python3"
 	with open(runtime_ini_file, "w") as out_file:
 		out_file.write("[python]\n")
