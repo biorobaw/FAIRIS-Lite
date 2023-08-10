@@ -36,10 +36,8 @@ while robot.experiment_supervisor.step(robot.timestep) != -1:
     print("Lidar Left Reading", robot.get_lidar_range_image()[200])
 
     # Sets the robot's motor velocity to 20 rad/sec
-    robot.set_rear_left_motor_velocity(20)
-    robot.set_rear_right_motor_velocity(20)
-    robot.set_front_left_motor_velocity(20)
-    robot.set_front_right_motor_velocity(20)
+    robot.set_right_motors_velocity(20)
+    robot.set_left_motors_velocity(20)
 
     # Calculates distance the wheel has turned since beginning of simulation
     distance_front_left_wheel_traveled = robot.wheel_radius * robot.get_front_left_motor_encoder_reading() / 1000

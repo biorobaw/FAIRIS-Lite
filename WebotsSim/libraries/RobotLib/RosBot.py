@@ -155,6 +155,17 @@ class RosBot(Supervisor):
     def set_rear_right_motor_velocity(self, velocity):
         self.rear_right_motor.setVelocity(self.velocity_saturation(velocity))
 
+    # Sets Right Motors Velocity (rad/sec)
+    def set_right_motors_velocity(self, velocity):
+        self.front_right_motor.setVelocity(self.velocity_saturation(velocity))
+        self.rear_right_motor.setVelocity(self.velocity_saturation(velocity))
+
+    # Sets Left Motors Velocity (rad/sec)
+    def set_left_motors_velocity(self, velocity):
+        self.front_left_motor.setVelocity(self.velocity_saturation(velocity))
+        self.rear_left_motor.setVelocity(self.velocity_saturation(velocity))
+
+
     # Sets all motors speed to 0
     def stop(self):
         for motor in self.all_motors:
