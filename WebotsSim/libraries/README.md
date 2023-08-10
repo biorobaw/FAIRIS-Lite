@@ -12,6 +12,8 @@ More information on specifications is available on [Webot's Documentation](https
 
 ## ROSbot Features
 
+![img.png](../../docs/figs/rosbotspecs.png)
+
 |Characteristics	| Values |
 | --- | --- |
 |Length |	200 mm |
@@ -37,6 +39,8 @@ environments. This is achieved by creating a class with a constructor that adds 
 them for use. We also provide setters and getters to easily access the sensors, motors, and cameras. Below we 
 provide a full description of all attributes and class functions that are provided. 
 
+
+![img.png](../../docs/figs/rosot_system.png)
 
 # RosBot Python Class Documentation
 
