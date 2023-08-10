@@ -149,7 +149,8 @@ Methods to retrieve sensor readings:
 - `get_front_right_distance_reading(self)`: Gets the current front-right distance sensor reading.
 - `get_rear_left_distance_reading(self)`: Gets the current rear-left distance sensor reading.
 - `get_rear_right_distance_reading(self)`: Gets the current rear-right distance sensor reading.
-- `get_lidar_range_image(self)`: Gets the Lidar range image.
+- `get_lidar_range_image(self)`: Gets the Lidar range image, returns a list of 800 distances where the 0 index is at 
+  the rear, 200 index is to the left, 400 index is to the front, and 600 index is to the right.
 
 ## Environment and Simulation Control
 
