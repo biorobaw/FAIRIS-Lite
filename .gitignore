@@ -161,3 +161,6 @@ cython_debug/
 
 # Project Files to be ignored
 runtime.ini
+FAIRIS-Lite/WebotsSim/Controllers/Lab*
+TaRobot.py
+

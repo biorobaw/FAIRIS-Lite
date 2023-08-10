@@ -77,5 +77,5 @@ A detailed guide for creating a new Webot Robot Controller can be found [here](W
 # RosBot Library Documentaion
 
 We provide a library which allows users to add a Robot Object to their controllers. The provided Library includes a 
-Python class called ```RosBot``` that can be obstancheated in a controller and provides functions to access sensors, 
+Python class called ```RosBot``` that can be instantiate in a controller and provides functions to access sensors, 
 motors, and load in objects in the simulated environment. Documentation of this library can be found [here](WebotsSim/libraries/README.md).
