@@ -22,12 +22,12 @@ TexturedBackgroundLight {
 }
 Floor {
   name "Maze Floor"
-  tileSize 1 1
+  tileSize 2 2
 }
 DEF Agent Rosbot {
   translation 3.068860920170147e-12 -1.3155904555854636e-09 -0.000562585249692632
   rotation -1.584138066379736e-05 1.596003898658653e-05 0.9999999997471639 1.5700000002428123
-  controller "Examples"
+  controller "Template"
   supervisor TRUE
   cameraSlot [
     Astra {

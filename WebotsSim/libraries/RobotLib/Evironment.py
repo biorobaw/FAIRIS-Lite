@@ -1,5 +1,5 @@
 import math
-from WebotsSim.libraries.MazeAndPcsParcer import parse_maze
+from WebotsSim.libraries.RobotLib.MazeAndPcsParcer import parse_maze
 from random import *
 
 class Maze:
