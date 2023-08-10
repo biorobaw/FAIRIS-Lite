@@ -61,6 +61,33 @@ class RosBot(Supervisor):
     ...
 ```
 
+## Class Attributes
+1. experiment_supervisor: An instance of the Webots Supervisor class, inherited from Supervisor(). 
+2. display: A display device used to plot and visualize place cells. 
+3. root_node, children_field, robot_node, robot_translation_field: Supervisor root nodes and robot-related fields. 
+4. wheel_radius, axel_diameter, robot_radius: Physical specifications of the robot. 
+5. timestep: The time interval used for simulation steps.
+## Motors: [Webots Docs](https://cyberbotics.com/doc/reference/motor)
+1. front_left_motor, front_right_motor, rear_left_motor, rear_right_motor: Rotational motors controlling wheel movement. 
+2. all_motors: A list containing references to all motors. 
+3. max_motor_velocity: The maximum rotational velocity of the motors.
+## Encoders: [Webots Docs](https://www.cyberbotics.com/doc/reference/positionsensor)
+1. front_left_encoder, front_right_encoder, rear_left_encoder, rear_right_encoder: Positional sensors for motor 
+   encoders. 
+2. all_encoders: A list containing references to all encoders.
+## Cameras: [Webots Docs](https://webots.cloud/run?version=R2023b&url=https%3A%2F%2Fgithub.com%2Fcyberbotics%2Fwebots%2Fblob%2Freleased%2Fprojects%2Fdevices%2Forbbec%2Fprotos%2FAstra.proto)
+1. depth_camera: A depth camera device for capturing depth information. 
+2. rgb_camera: An RGB camera device for capturing color information.
+## Lidar: [Webots Docs](https://webots.cloud/run?version=R2023b&url=https%3A%2F%2Fgithub.com%2Fcyberbotics%2Fwebots%2Fblob%2Freleased%2Fprojects%2Fdevices%2Fslamtec%2Fprotos%2FRpLidarA2.proto)
+1. lidar: A Lidar device for capturing range and point cloud data.
+## IMU: [Webots Docs](https://cyberbotics.com/doc/reference/compass)
+1. accelerometer, gyro, compass: IMU sensors for acceleration, angular velocity, and compass readings.
+## GPS: [Webots Docs](https://cyberbotics.com/doc/reference/gps)
+1. gps: A GPS device for capturing GPS data.
+## Distance Sensors: [Webots Docs](https://cyberbotics.com/doc/reference/distancesensor)
+1. front_left_ds, front_right_ds, rear_left_ds, rear_right_ds: Distance sensors for measuring proximity.
+2. all_distance_sensors: A list containing references to all distance sensors.
+
 ## Initialization
 
 ### `__init__(self)`
@@ -130,7 +157,7 @@ The following methods allow you to set the velocity of individual motors:
 - `set_rear_left_motor_velocity(self, velocity)`
 - `set_rear_right_motor_velocity(self, velocity)`
 
-Each of these methods sets the velocity of the corresponding motor to the specified value.
+Each of these methods sets the velocity of the corresponding motor to the specified value (radians/sec).
 
 ## Movement Control
 
