@@ -27,7 +27,7 @@ class RosBot(Supervisor):
 
         # Physical Robot Specifications
         self.wheel_radius = .043  # meters
-        self.axel_length = .235  # meters
+        self.axel_length = .265  # meters
         self.axel_distance = .053  # meters
 
         # Define all systems and makes them class attributes
