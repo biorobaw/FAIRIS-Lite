@@ -1,6 +1,8 @@
-from controller import Supervisor
-from WebotsSim.libraries.RobotLib.Evironment import *
 import matplotlib.pyplot as plt
+
+from WebotsSim.libraries.RobotLib.Environment import *
+from controller import Supervisor
+
 
 # Custom Class of RosBot offered by Webots
 #   Webots: https://www.cyberbotics.com/doc/guide/rosbot
@@ -24,12 +26,11 @@ class RosBot(Supervisor):
         self.robot_translation_field = self.robot_node.getField('translation')
 
         # Physical Robot Specifications
-        self.wheel_radius = 42.5 # mm
-        self.axel_length = 192 # mm
-        self.axel_distance = 53 # mm
-        self.robot_radius = 308.6/2 # mm
+        self.wheel_radius = .043  # meters
+        self.axel_length = .235  # meters
+        self.axel_distance = .053  # meters
 
-        # Define all systems and makes them class atributes
+        # Define all systems and makes them class attributes
         self.timestep = int(self.experiment_supervisor.getBasicTimeStep())
 
         # Webots Rotational Motors: https://cyberbotics.com/doc/reference/motor
@@ -43,7 +44,7 @@ class RosBot(Supervisor):
                            self.rear_right_motor]
         self.max_motor_velocity = self.rear_left_motor.getMaxVelocity()
 
-        # Initilize robot's motors
+        # Initialize robot's motors
         for motor in self.all_motors:
             motor.setPosition(float('inf'))
             motor.setVelocity(0.0)
@@ -58,7 +59,7 @@ class RosBot(Supervisor):
                              self.rear_left_encoder,
                              self.rear_right_encoder]
 
-        # Initilize robot's encoders
+        # Initialize robot's encoders
         for encoder in self.all_encoders:
             encoder.enable(self.timestep)
 
@@ -89,7 +90,7 @@ class RosBot(Supervisor):
         self.gps = self.experiment_supervisor.getDevice('gps')
         self.gps.enable(self.timestep)
 
-        # Webots Disance Sensors: https://www.cyberbotics.com/doc/reference/distancesensor
+        # Webots Distance Sensors: https://www.cyberbotics.com/doc/reference/distancesensor
         self.front_left_ds = self.experiment_supervisor.getDevice('front left distance sensor')
         self.front_right_ds = self.experiment_supervisor.getDevice('front right distance sensor')
         self.rear_left_ds = self.experiment_supervisor.getDevice('rear left distance sensor')
@@ -105,7 +106,7 @@ class RosBot(Supervisor):
 
         self.sensor_calibration()
 
-    # Preforms one timestep to update all sensors should be used when initilizing robot and after teleport
+    # Preforms one timestep to update all sensors should be used when initializing robot and after teleport
     def sensor_calibration(self):
         while self.experiment_supervisor.step(self.timestep) != -1:
             break
@@ -117,8 +118,8 @@ class RosBot(Supervisor):
     #   West    -> 180
     def get_compass_reading(self):
         compass_reading = self.compass.getValues()
-        rad = math.atan2(compass_reading[0],compass_reading[1]) + math.pi/2
-        bearing = (rad - math.pi/2) / math.pi * 180.0
+        rad = math.atan2(compass_reading[0], compass_reading[1]) + math.pi / 2
+        bearing = (rad - math.pi / 2) / math.pi * 180.0
         if bearing < 0.0:
             bearing += 360.0
         return round(bearing)
@@ -129,42 +130,43 @@ class RosBot(Supervisor):
         return [readings.getValue() for readings in self.all_encoders]
 
     # Caps the motor velocities to ensure PID calculations do no exceed motor speeds
-    def velocity_saturation(self, motor_velocity):
+    def velocity_saturation(self, motor_velocity, suppress=False):
         if motor_velocity > self.max_motor_velocity:
-            print("Provided Motor Velocity is to large set to: ", self.max_motor_velocity)
+            if not suppress:
+                print("Provided Motor Velocity is to large set to: ", self.max_motor_velocity)
             return self.max_motor_velocity
-        elif motor_velocity < -1*self.max_motor_velocity:
-            print("Provided Motor Velocity is to large set to: ", -1*self.max_motor_velocity)
-            return -1*self.max_motor_velocity
+        elif motor_velocity < -1 * self.max_motor_velocity:
+            if not suppress:
+                print("Provided Motor Velocity is to large set to: ", -1 * self.max_motor_velocity)
+            return -1 * self.max_motor_velocity
         else:
             return motor_velocity
 
     # Sets Front Left Motor Velocity (rad/sec)
-    def set_front_left_motor_velocity(self,velocity):
-        self.front_left_motor.setVelocity(self.velocity_saturation(velocity))
+    def set_front_left_motor_velocity(self, velocity, suppress=False):
+        self.front_left_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
 
     # Sets Front Right Motor Velocity (rad/sec)
-    def set_front_right_motor_velocity(self, velocity):
-        self.front_right_motor.setVelocity(self.velocity_saturation(velocity))
+    def set_front_right_motor_velocity(self, velocity, suppress=False):
+        self.front_right_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
 
     # Sets Rear Left Motor Velocity (rad/sec)
-    def set_rear_left_motor_velocity(self, velocity):
-        self.rear_left_motor.setVelocity(self.velocity_saturation(velocity))
+    def set_rear_left_motor_velocity(self, velocity, suppress=False):
+        self.rear_left_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
 
     # Sets Rear Right Motor Velocity (rad/sec)
-    def set_rear_right_motor_velocity(self, velocity):
-        self.rear_right_motor.setVelocity(self.velocity_saturation(velocity))
+    def set_rear_right_motor_velocity(self, velocity, suppress=False):
+        self.rear_right_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
 
     # Sets Right Motors Velocity (rad/sec)
-    def set_right_motors_velocity(self, velocity):
-        self.front_right_motor.setVelocity(self.velocity_saturation(velocity))
-        self.rear_right_motor.setVelocity(self.velocity_saturation(velocity))
+    def set_right_motors_velocity(self, velocity, suppress=False):
+        self.front_right_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
+        self.rear_right_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
 
     # Sets Left Motors Velocity (rad/sec)
-    def set_left_motors_velocity(self, velocity):
-        self.front_left_motor.setVelocity(self.velocity_saturation(velocity))
-        self.rear_left_motor.setVelocity(self.velocity_saturation(velocity))
-
+    def set_left_motors_velocity(self, velocity, suppress=False):
+        self.front_left_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
+        self.rear_left_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
 
     # Sets all motors speed to 0
     def stop(self):
@@ -172,7 +174,7 @@ class RosBot(Supervisor):
             motor.setVelocity(0)
 
     # Sets all motors speed to velocity
-    def go_forward(self,velocity=1):
+    def go_forward(self, velocity=1):
         for motor in self.all_motors:
             motor.setVelocity(self.velocity_saturation(velocity))
 
@@ -216,29 +218,29 @@ class RosBot(Supervisor):
     # DO NOT MODIFY: unless you are attempting to manipulate the webots world simulations!!!
 
     # Takes in a xml maze file and creates the walls, starting locations, and goal locations
-    def load_environment(self,maze_file):
+    def load_environment(self, maze_file):
         self.maze = Maze(maze_file)
         self.obstical_nodes = []
         self.boundry_wall_nodes = []
-        for obsticals in self.maze.obsticals:
-            self.children_field.importMFNodeFromString(-1, obsticals.get_webots_node_string())
-            self.obstical_nodes.append(self.experiment_supervisor.getFromDef('Obstical'))
-        for boundry_wall in self.maze.boundry_walls:
-            self.children_field.importMFNodeFromString(-1, boundry_wall.get_webots_node_string())
-            self.boundry_wall_nodes.append(self.experiment_supervisor.getFromDef('Obstical'))
+        for obstacles in self.maze.obsticals:
+            self.children_field.importMFNodeFromString(-1, obstacles.get_webots_node_string())
+            self.obstical_nodes.append(self.experiment_supervisor.getFromDef('Obstacle'))
+        for boundary_wall in self.maze.boundry_walls:
+            self.children_field.importMFNodeFromString(-1, boundary_wall.get_webots_node_string())
+            self.boundry_wall_nodes.append(self.experiment_supervisor.getFromDef('Obstacle'))
 
     # Teleports the robot to the point (x,y,z)
-    def teleport_robot(self, x = 0.0, y = 0.0, z = 0.0):
+    def teleport_robot(self, x=0.0, y=0.0, z=0.0):
         self.robot_translation_field.setSFVec3f([x, y, z])
         self.sensor_calibration()
 
     # Moves the robot to a random starting position
     def move_to_start(self):
         starting_position = self.maze.get_random_starting_position()
-        self.teleport_robot(starting_position.x,starting_position.y)
+        self.teleport_robot(starting_position.x, starting_position.y)
 
     # Plots Place cells and shows them on the Display
-    def update_display(self,fig):
+    def update_display(self, fig):
         fig.savefig('DisplayCache/temp.png')
         plt.close(fig)
         while self.experiment_supervisor.step(self.timestep) != -1:

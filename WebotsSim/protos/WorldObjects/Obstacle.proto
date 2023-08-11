@@ -6,10 +6,10 @@
 # The UV-mapping is defined in a metric way (the textures are not deformed - the reference is the longest edge).
 # template language: javascript
 
-PROTO Obstical [
+PROTO Obstacle [
   field SFVec3f    translation           0 0 0.05
   field SFRotation rotation              0 0 1 0
-  field SFString   name                  "Obstical"
+  field SFString   name                  "Obstacle"
   field SFVec3f    size                  0.012 0.18 0.1
   field SFString   contactMaterial       "default"
   field SFNode     appearance            PBRAppearance { baseColorMap ImageTexture { url [ "textures/wall_texture.jpg" ] } metalness 0 roughness 0.5 }

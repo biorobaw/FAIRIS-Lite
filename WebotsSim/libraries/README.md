@@ -54,7 +54,7 @@ This class inherits from the Webots `Supervisor` class and encapsulates function
 
 ```python
 from controller import Supervisor
-from WebotsSim.libraries.RobotLib.Evironment import *
+from WebotsSim.libraries.RobotLib.Environment import *
 import matplotlib.pyplot as plt
 ```
 
