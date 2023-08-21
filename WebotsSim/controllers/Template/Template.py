@@ -9,7 +9,7 @@ from WebotsSim.libraries.MyRobot import MyRobot
 robot = MyRobot()
 
 # Loads the environment from the maze file
-maze_file = 'worlds/mazes/Labs/Lab1.xml'
+maze_file = 'worlds/mazes/Labs/Lab1/Lab1.xml'
 robot.load_environment(maze_file)
 
 # Move robot to a random staring position listed in maze file
@@ -40,7 +40,7 @@ while robot.experiment_supervisor.step(robot.timestep) != -1:
     robot.set_left_motors_velocity(20)
 
     # Calculates distance the wheel has turned since beginning of simulation
-    distance_front_left_wheel_traveled = robot.wheel_radius * robot.get_front_left_motor_encoder_reading() / 1000
+    distance_front_left_wheel_traveled = robot.wheel_radius * robot.get_front_left_motor_encoder_reading()
 
     # Stops the robot after the robot moves a distance of 1.5 meters
     if distance_front_left_wheel_traveled > 1.5:
