@@ -9,24 +9,28 @@ class Maze:
 
         self.length = 0
         self.width = 0
-        self.boundry_walls = []
+        self.boundary_walls = []
         self.starting_location = []
         self.goal_locations = []
-        self.obsticals = []
+        self.obstacles = []
+        self.landmarks = []
 
-        walls, goals, start_positions = parse_maze(maze_file)
+        walls, goals, start_positions, landmarks = parse_maze(maze_file)
 
         for index, row in walls.iterrows():
             if index <= 3:
-                self.boundry_walls.append(BoundaryWall(row['x1'], row['y1'], row['x2'], row['y2'], id=index))
+                self.boundary_walls.append(BoundaryWall(row['x1'], row['y1'], row['x2'], row['y2'], id=index))
             else:
-                self.obsticals.append(Obstacle(row['x1'], row['y1'], row['x2'], row['y2'], id=index - 4))
+                self.obstacles.append(Obstacle(row['x1'], row['y1'], row['x2'], row['y2'], id=index - 4))
 
         for index, row in start_positions.iterrows():
             self.starting_location.append(StartingPosition(row['x'], row['y']))
 
         for index, row in goals.iterrows():
             self.goal_locations.append(Goal(row['x'], row['y'], row['id']))
+
+        for index, row in landmarks.iterrows():
+            self.landmarks.append(Landmark(row['x'], row['y'], color=[row['red'], row['green'], row['blue']], id=index))
 
     # Returns random starting positions
     def get_random_starting_position(self):
@@ -123,3 +127,33 @@ class Obstacle:
                                                                rotation=self.get_webots_rotation_string(),
                                                                size=self.get_webots_size_string())
         return 'DEF Obstacle_{id} Obstacle '.format(id=self.id) + '{ ' + node_string + ' }'
+
+
+class Landmark:
+    def __init__(self, x, y, height=1.5, radius=.25, z=0.75, color=[1, 1, 1], id=0):
+        self.height = height
+        self.radius = radius
+        self.x = x
+        self.y = y
+        self.z = z
+        self.translation = [x, y, z]
+        self.id = id
+        self.color = color
+
+    def get_webots_translation_string(self):
+        txt = 'translation {x:.2f} {y:.2f} {z:.2f}'
+        return txt.format(x=self.translation[0], y=self.translation[1], z=self.translation[2])
+
+    def get_webots_size_string(self):
+        txt = 'size {width:.2f} {length:.2f} {height:.2f}'
+        return txt.format(width=self.height, length=self.radius, height=self.radius-.01)
+
+    def get_webots_color_string(self):
+        txt = 'color {red:.2f} {green:.2f} {blue:.2f}'
+        return txt.format(red=self.color[0], green=self.color[1], blue=self.color[2])
+
+    def get_webots_node_string(self):
+        node_string = "{translation} {color} {size}".format(translation=self.get_webots_translation_string(),
+                                                            color=self.get_webots_color_string(),
+                                                            size=self.get_webots_size_string())
+        return 'DEF Landmark_{id} Landmark '.format(id=self.id) + '{ ' + node_string + ' }'

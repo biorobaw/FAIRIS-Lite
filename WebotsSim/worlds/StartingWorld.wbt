@@ -3,12 +3,11 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 IMPORTABLE EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/husarion/rosbot/protos/Rosbot.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/devices/orbbec/protos/Astra.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
 IMPORTABLE EXTERNPROTO "../protos/ROSbot/ROSbot_Lidar.proto"
+IMPORTABLE EXTERNPROTO "../protos/ROSbot/ROSbot_Camera.proto"
 IMPORTABLE EXTERNPROTO "../protos/WorldObjects/Obstacle.proto"
-EXTERNPROTO "../protos/WorldObjects/Obstacle.proto"
-
+IMPORTABLE EXTERNPROTO "../protos/WorldObjects/Landmark.proto"
 
 WorldInfo {
 }
@@ -31,12 +30,12 @@ DEF Agent Rosbot {
   controller "<extern>"
   supervisor TRUE
   cameraSlot [
-    Astra {
+    ROSbot_Camera {
       translation 0.04 0 -0.065
       name "camera"
     }
     Display {
-      name "Place Cell Display"
+      name "User Display"
       width 200
       height 400
     }

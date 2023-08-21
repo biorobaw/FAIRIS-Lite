@@ -1,0 +1,64 @@
+#VRML_SIM R2023a utf8
+# license: Copyright Cyberbotics Ltd. Licensed for use only with Webots.
+# license url: https://cyberbotics.com/webots_assets_license
+# A box object implemented at the Solid-node level.
+# The box has similar properties as the VRML Box node in term of axis and fields.
+# The UV-mapping is defined in a metric way (the textures are not deformed - the reference is the longest edge).
+# template language: javascript
+
+PROTO Landmark [
+  field SFVec3f    translation           0 0 0.75
+  field SFRotation rotation              0 0 1 0
+  field SFVec3f    size                  1.5 0.25 0.249
+  field SFColor    color                 1 1 0
+  field SFString   name                  "Landmark"
+  field SFBool     enableBoundingObject  TRUE
+  field SFBool     castShadows           TRUE
+  field SFNode     physics               NULL
+
+]
+{
+  %<
+    let size = fields.size.value;
+    if (size.x <= 0 || size.y <= 0 || size.z <= 0) {
+      size = fields.size.defaultValue;
+      console.error('\'size\' must contain positive values. Value reset to (' + size.x + ', ' + size.y + ', ' + size.z + ').');
+    }
+    let color = fields.color.value;
+    if (color.red <= 1 || color.green <= 1 || color.blue <= 1) {
+      size = fields.color.defaultValue;
+      console.error('\'color\' must contain positive values. Value reset to (' + size.x + ', ' + size.y + ', ' + size.z + ').');
+    }
+  >%
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    children[
+      Shape{
+        appearance PBRAppearance {
+          baseColor IS color
+          roughness 1
+          metalness 0
+        }
+        geometry Cylinder {
+          height %<= size.x >%
+          radius %<= size.y >%
+        }
+        castShadows IS castShadows
+      }
+
+    ]
+    name IS name
+    boundingObject Cylinder{
+      height %<= size.x >%
+      radius %<= size.y >%
+    }
+
+    physics IS physics
+    recognitionColors [
+        1 1 0
+    ]
+  }
+
+
+}
