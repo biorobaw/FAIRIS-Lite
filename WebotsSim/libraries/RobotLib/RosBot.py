@@ -1,3 +1,5 @@
+import math
+
 import matplotlib.pyplot as plt
 
 from WebotsSim.libraries.RobotLib.Environment import *
@@ -24,6 +26,7 @@ class RosBot(Supervisor):
         self.children_field = self.root_node.getField('children')
         self.robot_node = self.experiment_supervisor.getFromDef('Agent')
         self.robot_translation_field = self.robot_node.getField('translation')
+        self.robot_rotation_field = self.robot_node.getField('rotation')
 
         # Physical Robot Specifications
         self.wheel_radius = .043  # meters
@@ -236,14 +239,15 @@ class RosBot(Supervisor):
             self.landmark_nodes.append(self.experiment_supervisor.getFromDef('Landmark'))
 
     # Teleports the robot to the point (x,y,z)
-    def teleport_robot(self, x=0.0, y=0.0, z=0.0):
+    def teleport_robot(self, x=0.0, y=0.0, z=0.0, theta=math.pi/3):
         self.robot_translation_field.setSFVec3f([x, y, z])
+        self.robot_rotation_field.setSFRotation([0,0,1,theta])
         self.sensor_calibration()
 
     # Moves the robot to a random starting position
     def move_to_start(self):
         starting_position = self.maze.get_random_starting_position()
-        self.teleport_robot(starting_position.x, starting_position.y)
+        self.teleport_robot(starting_position.x, starting_position.y,theta=starting_position.theta)
 
     # Plots Place cells and shows them on the Display
     def update_display(self, fig):

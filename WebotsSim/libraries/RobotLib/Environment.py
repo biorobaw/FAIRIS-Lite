@@ -24,7 +24,7 @@ class Maze:
                 self.obstacles.append(Obstacle(row['x1'], row['y1'], row['x2'], row['y2'], id=index - 4))
 
         for index, row in start_positions.iterrows():
-            self.starting_location.append(StartingPosition(row['x'], row['y']))
+            self.starting_location.append(StartingPosition(row['x'], row['y'], row['theta']))
 
         for index, row in goals.iterrows():
             self.goal_locations.append(Goal(row['x'], row['y'], row['id']))
@@ -53,8 +53,9 @@ class Goal(Point):
 
 
 class StartingPosition(Point):
-    def __init__(self, x, y):
+    def __init__(self, x, y,theta):
         super().__init__(x, y)
+        self.theta =theta
 
 
 class BoundaryWall:

@@ -39,13 +39,13 @@ def parse_all_landmarks(xml_root):
 
 
 def parse_position(xml_position):
-    return pd.DataFrame(data=[[float(xml_position.get(p)) for p in ['x', 'y', 'w']]], columns=['x', 'y', 'w'])
+    return pd.DataFrame(data=[[float(xml_position.get(p)) for p in ['x', 'y', 'theta']]], columns=['x', 'y', 'theta'])
 
 
 def parse_start_positions(xml_positions):
     if xml_positions is None:
-        return pd.DataFrame(columns=['x', 'y', 'w'])
-    return pd.concat([pd.DataFrame(columns=['x', 'y', 'w'])] + [parse_position(xml_pos) for xml_pos in
+        return pd.DataFrame(columns=['x', 'y', 'theta'])
+    return pd.concat([pd.DataFrame(columns=['x', 'y', 'theta'])] + [parse_position(xml_pos) for xml_pos in
                                                                 xml_positions.findall('pos')]).reset_index(drop=True)
 
 
