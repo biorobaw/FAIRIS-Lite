@@ -14,7 +14,11 @@ To work with FAIRIS-Lite, ensure that your system meets the following requiremen
 
 Follow these steps to set up FAIRIS-Lite on your local machine:
 
-1. Clone this repository onto your device.
+1. Clone this repository onto your device. 
+   1. There are numerous ways to achieve this, and you can decide which option is best for you. Please note that if 
+      you are going to be using this repo for a course or for an extended amount of time we recommend that you clone 
+      the repo and preform pulls when an update is pushed. A complete guide on how to clone github repositories can 
+      be found [here.](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) 
 2. Open a terminal session (on MacOS or Linux) or a command shell (on Windows).
 
 ### Launching Terminal on MacOS
