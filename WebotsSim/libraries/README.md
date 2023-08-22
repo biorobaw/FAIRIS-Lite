@@ -190,7 +190,7 @@ Methods for controlling the simulation environment:
 - `load_environment(self, maze_file)`: Loads a maze from an XML file, creating walls, starting locations, and goal locations.
 - `teleport_robot(self, x=0.0, y=0.0, z=0.0)`: Teleports the robot to the specified coordinates.
 - `move_to_start(self)`: Moves the robot to a random starting position.
-- `update_display(self, fig)`: Plots place cells and displays them on the simulation's display.
+- `update_display(self, fig)`: Uses extra display shown in the Webots interface to displace the input figure.
 
 ## Usage Example
 
@@ -241,7 +241,7 @@ while robot.experiment_supervisor.step(robot.timestep) != -1:
     robot.set_front_right_motor_velocity(20)
 
     # Calculates distance the wheel has turned since beginning of simulation
-    distance_front_left_wheel_traveled = robot.wheel_radius * robot.get_front_left_motor_encoder_reading() / 1000
+    distance_front_left_wheel_traveled = robot.wheel_radius * robot.get_front_left_motor_encoder_reading() 
 
     # Stops the robot after the robot moves a distance of 1.5 meters
     if distance_front_left_wheel_traveled > 1.5:
