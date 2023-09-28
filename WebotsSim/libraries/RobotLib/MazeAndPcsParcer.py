@@ -27,13 +27,13 @@ def parse_all_obsticles(xml_root):
 
 
 def parse_landmark(xml_landmark):
-    data = [[float(xml_landmark.get(data)) for data in ['x', 'y', 'red', 'green', 'blue']]]
-    return pd.DataFrame(data=data, columns=['x', 'y', 'red', 'green', 'blue'])
+    data = [[float(xml_landmark.get(data)) for data in ['x', 'y', 'height', 'red', 'green', 'blue']]]
+    return pd.DataFrame(data=data, columns=['x', 'y', 'height', 'red', 'green', 'blue'])
 
 
 def parse_all_landmarks(xml_root):
     return pd.concat(
-        [pd.DataFrame(columns=['x', 'y', 'red', 'green', 'blue'])] + [parse_landmark(xml_landmark) for xml_landmark in
+        [pd.DataFrame(columns=['x', 'y', 'height', 'red', 'green', 'blue'])] + [parse_landmark(xml_landmark) for xml_landmark in
                                                                       xml_root.findall('landmark')]).reset_index(
         drop=True)
 

@@ -30,7 +30,7 @@ class Maze:
             self.goal_locations.append(Goal(row['x'], row['y'], row['id']))
 
         for index, row in landmarks.iterrows():
-            self.landmarks.append(Landmark(row['x'], row['y'], color=[row['red'], row['green'], row['blue']], id=index))
+            self.landmarks.append(Landmark(row['x'], row['y'], height=row['height'] ,color=[row['red'], row['green'], row['blue']], id=index))
 
     # Returns random starting positions
     def get_random_starting_position(self):
@@ -131,13 +131,13 @@ class Obstacle:
 
 
 class Landmark:
-    def __init__(self, x, y, height=1.5, radius=.25, z=0.75, color=[1, 1, 1], id=0):
+    def __init__(self, x, y, height=1.5, radius=.25, color=[1, 1, 1], id=0):
         self.height = height
         self.radius = radius
         self.x = x
         self.y = y
-        self.z = z
-        self.translation = [x, y, z]
+        self.z = height/2
+        self.translation = [x, y, self.z]
         self.id = id
         self.color = color
 

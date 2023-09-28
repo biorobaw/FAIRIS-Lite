@@ -22,6 +22,7 @@ TexturedBackgroundLight {
 }
 Floor {
   name "Maze Floor"
+  size 16 16
   tileSize 2 2
 }
 DEF Agent Rosbot {
@@ -31,7 +32,8 @@ DEF Agent Rosbot {
   supervisor TRUE
   cameraSlot [
     ROSbot_Camera {
-      translation 0.04 0 -0.065
+      translation 0.11 0 -0.065
+      rotation 0 1 0 -0.075
       name "camera"
     }
     Display {
