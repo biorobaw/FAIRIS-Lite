@@ -1,7 +1,7 @@
+# WebotsSim/libraries/RobotLib/RosBot.py
 import math
-
+import time
 import matplotlib.pyplot as plt
-
 from WebotsSim.libraries.RobotLib.Environment import *
 from controller import Supervisor
 
@@ -13,6 +13,11 @@ class RosBot(Supervisor):
 
     # Initiilize an instance of Webots Harrison's RosBot
     def __init__(self):
+
+        # Calculated position variables
+        self.x = 1.5
+        self.y = -1.5
+        self.theta = 0
 
         # Inherent from Webots Robot Class: https://cyberbotics.com/doc/reference/robot
         self.experiment_supervisor = Supervisor()
@@ -257,3 +262,140 @@ class RosBot(Supervisor):
             ir = self.display.imageLoad('DisplayCache/temp.png')
             self.display.imagePaste(ir, 0, 0, True)
             break
+
+    # Lab 1 Functions
+    def move_straight(self, distance, velocity=20.0):
+
+        print(f"Moving straight at a distance of {distance} with a velocity of {velocity}")
+        # Calculate the number of rotations each wheel needs to achieve the desired distance
+        rotations_required = distance / (2 * math.pi * self.wheel_radius)
+        
+        # Determine the initial encoder readings
+        initial_encoders = self.get_encoder_readings()
+        
+        # Determine the target encoder readings based on the desired distance
+        target_encoders = [initial_encoders[0] + rotations_required,
+                        initial_encoders[1] + rotations_required,
+                        initial_encoders[2] + rotations_required,
+                        initial_encoders[3] + rotations_required]
+        
+        # Move the robot until the target encoder readings are achieved
+        while True:
+            current_encoders = self.get_encoder_readings()
+            
+            # Check if the robot has moved the desired distance
+            if (current_encoders[0] >= target_encoders[0] and distance > 0) or (current_encoders[0] <= target_encoders[0] and distance < 0):
+                self.stop()
+                break
+            
+            # Set motor velocities based on the desired movement direction
+            if distance > 0:
+                self.go_forward(velocity)
+            else:
+                self.go_forward(-velocity)
+            
+            # Update the simulation for the next timestep
+            self.experiment_supervisor.step(self.timestep)
+        
+        self.update_position_after_straight_movement(distance)
+
+    def move_along_curve(self, R, curve_length, velocity=10.0):
+
+        print(f"Moving along a curve with an ICC radius {R}, a curve length of {curve_length} at a velocity {velocity}.")
+        # Calculate the angular velocity required to achieve the desired curvature
+        omega = velocity / R
+        
+        # Calculate the velocities of the left and right wheels
+        v_left = velocity - omega * (self.axel_length / 2)
+        v_right = velocity + omega * (self.axel_length / 2)
+        
+        # Determine the initial encoder readings
+        initial_encoders = self.get_encoder_readings()
+        
+        # Determine the target encoder readings based on the desired curve length
+        rotations_required = curve_length / (2 * math.pi * self.wheel_radius)
+        target_encoders = [initial_encoders[0] + rotations_required,
+                        initial_encoders[1] + rotations_required,
+                        initial_encoders[2] + rotations_required,
+                        initial_encoders[3] + rotations_required]
+    
+        # Move the robot along the curve until the target encoder readings are achieved
+        while True:
+            current_encoders = self.get_encoder_readings()
+            
+            # Check if the robot has moved the desired curve length
+            if (current_encoders[0] >= target_encoders[0] and curve_length > 0) or (current_encoders[0] <= target_encoders[0] and curve_length < 0):
+                self.stop()
+                break
+            
+            # Set motor velocities to achieve the desired curvature
+            self.set_left_motors_velocity(v_left)
+            self.set_right_motors_velocity(v_right)
+            
+            # Update the simulation for the next timestep
+            self.experiment_supervisor.step(self.timestep)
+        
+        alpha = curve_length / abs(R)  # Calculate the central angle
+        self.update_position_after_arc_movement(R, alpha)
+
+    def rotate_in_place(self, angle_degrees, velocity=5):
+        # Convert angle from degrees to radians
+        angle = math.radians(angle_degrees)
+        
+        # Calculate the distance each wheel needs to travel to achieve the desired rotation
+        distance_per_wheel = (self.axel_length / 2) * angle * 24
+        
+        # Determine the initial encoder readings
+        initial_encoders = self.get_encoder_readings()
+        
+        # Determine the target encoder readings based on the desired rotation
+        target_encoders = [initial_encoders[0] + distance_per_wheel,
+                        initial_encoders[1] - distance_per_wheel,
+                        initial_encoders[2] + distance_per_wheel,
+                        initial_encoders[3] - distance_per_wheel]
+        
+        # Rotate the robot until the target encoder readings are achieved
+        while True:
+            current_encoders = self.get_encoder_readings()
+            
+            # Check if the robot has rotated the desired amount
+            if (current_encoders[0] >= target_encoders[0] and angle > 0) or (current_encoders[0] <= target_encoders[0] and angle < 0):
+                self.stop()
+                break
+            
+            # Set motor velocities based on the desired rotation direction
+            if angle > 0:
+                self.set_left_motors_velocity(velocity)
+                self.set_right_motors_velocity(-velocity)
+            else:
+                self.set_left_motors_velocity(-velocity)
+                self.set_right_motors_velocity(velocity)
+            
+            # Update the simulation for the next timestep
+            self.experiment_supervisor.step(self.timestep)
+
+        self.theta += angle_degrees
+
+    # Calculated position functions
+    def update_position_after_straight_movement(self, d):
+        self.x += d * math.cos(self.theta) / 5
+        self.y += d * math.sin(self.theta) / 5
+
+    def update_position_after_arc_movement(self, R, alpha):
+        # Update for right turn (positive R)
+        if R > 0:
+            self.x += R * (math.sin(self.theta + alpha) - math.sin(self.theta))
+            self.y += R * (math.cos(self.theta) - math.cos(self.theta + alpha))
+        # Update for left turn (negative R)
+        else:
+            self.x += R * (math.sin(self.theta - alpha) - math.sin(self.theta))
+            self.y += R * (math.cos(self.theta) - math.cos(self.theta - alpha))
+        self.theta += alpha
+
+    def get_current_position(self):
+        return self.x, self.y, self.theta
+    
+    def print_pose(self):
+        print(f"Calculated position: x = {self.x:.2f}, y = {self.y:.2f}, theta = {self.theta:.2f} from East")
+        GPS = self.gps.getValues()
+        print(f"Truth value: x = {GPS[0]:.2f}, y = {GPS[1]:.2f}, theta = {self.get_compass_reading()} from East")
