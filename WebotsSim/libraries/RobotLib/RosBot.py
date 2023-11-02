@@ -247,6 +247,7 @@ class RosBot(Supervisor):
     # Moves the robot to a random starting position
     def move_to_start(self):
         starting_position = self.maze.get_random_starting_position()
+        self.starting_position = starting_position
         self.teleport_robot(starting_position.x, starting_position.y,theta=starting_position.theta)
 
     # Plots Place cells and shows them on the Display

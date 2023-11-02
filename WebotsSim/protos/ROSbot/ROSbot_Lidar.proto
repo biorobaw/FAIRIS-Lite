@@ -10,11 +10,13 @@ PROTO ROSbot_Lidar [
   field SFVec3f    translation   0 0 0.031
   field SFRotation rotation      0 0 1 0
   field SFString   name          "ROSbot_Lidar"
+  field SFFloat    noise         0.0
 ]
 {
   Lidar {
     translation IS translation
     rotation IS rotation
+    noise IS noise
     name IS name
     children [
       Transform {
