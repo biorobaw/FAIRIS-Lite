@@ -338,43 +338,65 @@ class RosBot(Supervisor):
         alpha = curve_length / abs(R)  # Calculate the central angle
         self.update_position_after_arc_movement(R, alpha)
 
-    def rotate_in_place(self, angle_degrees, velocity=5):
-        # Convert angle from degrees to radians
-        angle = math.radians(angle_degrees)
+    # def rotate_in_place(self, angle_degrees, velocity=5):
+    #     # Convert angle from degrees to radians
+    #     angle = math.radians(angle_degrees)
         
-        # Calculate the distance each wheel needs to travel to achieve the desired rotation
-        distance_per_wheel = (self.axel_length / 2) * angle * 24
+    #     # Calculate the distance each wheel needs to travel to achieve the desired rotation
+    #     distance_per_wheel = (self.axel_length / 2) * angle * 24
         
-        # Determine the initial encoder readings
-        initial_encoders = self.get_encoder_readings()
+    #     # Determine the initial encoder readings
+    #     initial_encoders = self.get_encoder_readings()
         
-        # Determine the target encoder readings based on the desired rotation
-        target_encoders = [initial_encoders[0] + distance_per_wheel,
-                        initial_encoders[1] - distance_per_wheel,
-                        initial_encoders[2] + distance_per_wheel,
-                        initial_encoders[3] - distance_per_wheel]
+    #     # Determine the target encoder readings based on the desired rotation
+    #     target_encoders = [initial_encoders[0] + distance_per_wheel,
+    #                     initial_encoders[1] - distance_per_wheel,
+    #                     initial_encoders[2] + distance_per_wheel,
+    #                     initial_encoders[3] - distance_per_wheel]
         
-        # Rotate the robot until the target encoder readings are achieved
-        while True:
-            current_encoders = self.get_encoder_readings()
+    #     # Rotate the robot until the target encoder readings are achieved
+    #     while True:
+    #         current_encoders = self.get_encoder_readings()
             
-            # Check if the robot has rotated the desired amount
-            if (current_encoders[0] >= target_encoders[0] and angle > 0) or (current_encoders[0] <= target_encoders[0] and angle < 0):
+    #         # Check if the robot has rotated the desired amount
+    #         if (current_encoders[0] >= target_encoders[0] and angle > 0) or (current_encoders[0] <= target_encoders[0] and angle < 0):
+    #             self.stop()
+    #             break
+            
+    #         # Set motor velocities based on the desired rotation direction
+    #         if angle > 0:
+    #             self.set_left_motors_velocity(velocity)
+    #             self.set_right_motors_velocity(-velocity)
+    #         else:
+    #             self.set_left_motors_velocity(-velocity)
+    #             self.set_right_motors_velocity(velocity)
+            
+    #         # Update the simulation for the next timestep
+    #         self.experiment_supervisor.step(self.timestep)
+
+    #     self.theta += angle_degrees
+
+    def rotate_in_place(self, angle_degrees, velocity=2.5, tolerance=1.0):
+        start = self.get_compass_reading()
+        desired = (start - angle_degrees) % 360
+
+        while self.experiment_supervisor.step(self.timestep) != -1:
+            current = self.get_compass_reading()
+            print(current)
+            print(desired)
+
+            # Check if the current angle is close enough to the desired angle
+            if abs(current - desired) <= tolerance:
                 self.stop()
                 break
-            
-            # Set motor velocities based on the desired rotation direction
-            if angle > 0:
-                self.set_left_motors_velocity(velocity)
-                self.set_right_motors_velocity(-velocity)
-            else:
+
+            # Determine the rotation direction based on the sign of angle_degrees
+            if angle_degrees <= 0:
                 self.set_left_motors_velocity(-velocity)
                 self.set_right_motors_velocity(velocity)
-            
-            # Update the simulation for the next timestep
-            self.experiment_supervisor.step(self.timestep)
-
-        self.theta += angle_degrees
+            else:
+                self.set_left_motors_velocity(velocity)
+                self.set_right_motors_velocity(-velocity)
 
     # Calculated position functions
     def update_position_after_straight_movement(self, d):
@@ -399,3 +421,54 @@ class RosBot(Supervisor):
         print(f"Calculated position: x = {self.x:.2f}, y = {self.y:.2f}, theta = {self.theta:.2f} from East")
         GPS = self.gps.getValues()
         print(f"Truth value: x = {GPS[0]:.2f}, y = {GPS[1]:.2f}, theta = {self.get_compass_reading()} from East")
+
+    def saturation_speed(self, velocity):
+        if velocity >= 26:
+            velocity = 26
+        elif velocity <= -26:
+            velocity = -26
+        return velocity
+    
+    def forward_speed_PID(self, dMaintain = 0.5, kP = 1500):
+        fd = self.get_lidar_range_image()[400]
+        error = fd - dMaintain
+        return self.saturation_speed(kP * error)
+
+    def wall_follow_PID(self, dMin = 0.45, kP = 50, wall = 'R'):
+        Vf = self.forward_speed_PID(dMaintain = 0.4)
+        rd = min(self.get_lidar_range_image()[525:600])
+        ld = min(self.get_lidar_range_image()[125:200])
+        
+        if wall == 'R':
+            error = dMin - rd
+            if rd < dMin:
+                Vr = self.saturation_speed(Vf)
+                Vl = self.saturation_speed(Vf - abs(kP * error))
+            elif rd > dMin:
+                Vr = self.saturation_speed(Vf - abs(kP * error))
+                Vl = self.saturation_speed(Vf)
+            elif ld < 0.75:
+                error = 0.75 - ld
+                Vr = self.saturation_speed(Vf - abs(kP * error))
+                Vl = self.saturation_speed(0)
+            else:
+                Vl = Vf
+                Vr = Vf
+        
+        elif wall == "L":
+            error = dMin - ld
+            if ld < dMin:
+                Vr = self.saturation_speed(Vf - abs(kP * error))
+                Vl = self.saturation_speed(Vf)
+            elif ld > dMin:
+                Vr = self.saturation_speed(Vf)
+                Vl = self.saturation_speed(Vf - abs(kP * error))
+            elif rd < 0.75:
+                error = 0.75 - rd
+                Vr = self.saturation_speed(0)
+                Vl = self.saturation_speed(Vf - abs(kP * error))
+            else:
+                Vl = Vf
+                Vr = Vf
+
+        return Vl, Vr

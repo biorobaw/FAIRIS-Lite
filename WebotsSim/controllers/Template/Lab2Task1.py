@@ -18,6 +18,16 @@ mazes = [
 
 robot.load_environment(mazes[0])
 
+max = 26
+
 # Move robot to a random staring position listed in maze file
 robot.move_to_start()
 
+robot.set_left_motors_velocity(max)
+robot.set_right_motors_velocity(max)
+
+while robot.experiment_supervisor.step(robot.timestep) != -1:
+    print("Lidar Front Reading: ", robot.get_lidar_range_image()[400])
+    speed = robot.saturation_speed(robot.forward_speed_PID())
+    robot.set_left_motors_velocity(speed)
+    robot.set_right_motors_velocity(speed)
