@@ -10,11 +10,12 @@ PROTO Landmark [
   field SFVec3f    translation           0 0 0.75
   field SFRotation rotation              0 0 1 0
   field SFVec3f    size                  1.5 0.25 0.249
-  field SFColor    color                 1 1 0
   field SFString   name                  "Landmark"
+  field SFColor    color                 1 0 0
   field SFBool     enableBoundingObject  TRUE
   field SFBool     castShadows           TRUE
   field SFNode     physics               NULL
+  field MFColor    recognitionColors     []
 
 ]
 {
@@ -25,11 +26,12 @@ PROTO Landmark [
       console.error('\'size\' must contain positive values. Value reset to (' + size.x + ', ' + size.y + ', ' + size.z + ').');
     }
     let color = fields.color.value;
-    if (color.red <= 1 || color.green <= 1 || color.blue <= 1) {
-      size = fields.color.defaultValue;
-      console.error('\'color\' must contain positive values. Value reset to (' + size.x + ', ' + size.y + ', ' + size.z + ').');
+    if (color.r > 1 || color.g > 1 || color.b > 1) {
+      color = fields.color.defaultValue;
+      console.error('\'color\' must contain positive values. Value reset to (' + color.r + ', ' + color.g + ', ' + color.b + ').');
     }
   >%
+
   Solid {
     translation IS translation
     rotation IS rotation
@@ -55,9 +57,9 @@ PROTO Landmark [
     }
 
     physics IS physics
-    recognitionColors [
-        1 1 0
-    ]
+    recognitionColors IS recognitionColors
+
+
   }
 
 

@@ -152,9 +152,13 @@ class Landmark:
     def get_webots_color_string(self):
         txt = 'color {red:.2f} {green:.2f} {blue:.2f}'
         return txt.format(red=self.color[0], green=self.color[1], blue=self.color[2])
+    def get_webots_recognition_color_string(self):
+        txt = 'recognitionColors [{red:.2f} {green:.2f} {blue:.2f}]'
+        return txt.format(red=self.color[0], green=self.color[1], blue=self.color[2])
 
     def get_webots_node_string(self):
-        node_string = "{translation} {color} {size}".format(translation=self.get_webots_translation_string(),
+        node_string = "{translation} {color} {recognitionColors} {size}".format(translation=self.get_webots_translation_string(),
                                                             color=self.get_webots_color_string(),
+                                                            recognitionColors=self.get_webots_recognition_color_string(),
                                                             size=self.get_webots_size_string())
         return 'DEF Landmark_{id} Landmark '.format(id=self.id) + '{ ' + node_string + ' }'

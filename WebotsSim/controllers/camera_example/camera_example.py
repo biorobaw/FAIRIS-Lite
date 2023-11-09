@@ -9,12 +9,12 @@ from WebotsSim.libraries.MyRobot import MyRobot
 robot = MyRobot()
 
 # Loads the environment from the maze file
-maze_files = ['worlds/mazes/Labs/Lab3/Lab3_Task1.xml',
+maze_files = ['worlds/mazes/Labs/Lab4/Lab4_Task1.xml',
               'worlds/mazes/Labs/Lab4/Lab4_Task2_1.xml',
               'worlds/mazes/Labs/Lab4/Lab4_Task2_2.xml',
               'worlds/mazes/Labs/Lab4/Lab4_Task2_3.xml']
 
-robot.load_environment(maze_files[4])
+robot.load_environment(maze_files[0])
 
 # Move robot to a random staring position listed in maze file
 robot.move_to_start()
@@ -37,6 +37,7 @@ while robot.experiment_supervisor.step(robot.timestep) != -1:
         print(f'Object relative Size: \n Y: {landmark.getSize()[0]} \t Z: {landmark.getSize()[1]}')
         print(f'Object position on image: \n X: {landmark.getPositionOnImage()[0]} \t Y: {landmark.getPositionOnImage()[1]}')
         print(f'Object size on image: \n X: {landmark.getSizeOnImage()[0]} \t Y: {landmark.getSizeOnImage()[1]}')
+        print(f'Object Color: R = {landmark.getColors()[0]} \t G = {landmark.getColors()[1]} \t B = {landmark.getColors()[2]}')
 
 
     # Sets the robot's motor velocity to 20 rad/sec
