@@ -6,7 +6,8 @@ FAIRIS-Lite is a project framework that allows you to implement navigational con
 
 To work with FAIRIS-Lite, ensure that your system meets the following requirements:
 
-1. Python 3.9+: If you don't have Python 3.9 or above installed, you can find a guided tutorial on how to install or update Python [here](https://realpython.com/installing-python/) or [here](https://www.pythoncentral.io/how-to-update-python/).
+1. Python 3.10+: If you don't have Python 3.10 or above installed, you can find a guided tutorial on how to install or 
+   update Python [here](https://realpython.com/installing-python/) or [here](https://www.pythoncentral.io/how-to-update-python/).
 
 2. Cyberbotics Webots R2023b: FAIRIS-Lite works in conjunction with Webots version R2023b. You need to install this open-source software to utilize FAIRIS-Lite. A guided installation guide can be found [here](https://cyberbotics.com/doc/guide/installation-procedure).
 

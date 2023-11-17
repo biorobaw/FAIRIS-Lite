@@ -130,6 +130,7 @@ class Obstacle:
         return 'DEF Obstacle_{id} Obstacle '.format(id=self.id) + '{ ' + node_string + ' }'
 
 
+
 class Landmark:
     def __init__(self, x, y, height=1.5, radius=.25, color=[1, 1, 1], id=0):
         self.height = height

@@ -31,7 +31,7 @@ if platform.system() == 'Windows':
 
 else:
 	try:
-		os.system("python3 -m venv venv")
+		os.system("python3.10 -m venv venv")
 	except:
 		print("Unable to set up Python venv, exiting with ERROR:1")
 		print("User may need to set up python vevn sepratly")
@@ -39,7 +39,7 @@ else:
 
 	project_path = os.getcwd()
 	print(project_path)
-	for ver in [9,10,11]:
+	for ver in [10,11]:
 		try:
 			file_to_add_site_packages = "venv/lib/python3."+str(ver)+"/site-packages/FAIRIS_LIBS.pth"
 			line_to_write = project_path
