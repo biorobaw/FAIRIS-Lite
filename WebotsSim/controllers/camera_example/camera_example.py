@@ -13,9 +13,13 @@ maze_files = ['worlds/mazes/Labs/Lab5/Lab5_Maze1.xml',
               'worlds/mazes/Labs/Lab5/Lab5_Maze2.xml',
               'worlds/mazes/Labs/Lab5/Lab5_Maze3.xml',
               'worlds/mazes/Labs/Lab5/Lab5_EC1.xml',
-              'worlds/mazes/Labs/Lab5/Lab5_EC2.xml']
+              'worlds/mazes/Labs/Lab5/Lab5_EC2.xml',
+              'worlds/mazes/MicroMouse/Maze1.xml',
+              'worlds/mazes/MicroMouse/Maze2.xml',
+              'worlds/mazes/MicroMouse/Maze3.xml',
+              'worlds/mazes/MicroMouse/Maze4.xml']
 
-robot.load_environment(maze_files[4])
+robot.load_environment(maze_files[-1])
 
 # Move robot to a random staring position listed in maze file
 robot.move_to_start()
