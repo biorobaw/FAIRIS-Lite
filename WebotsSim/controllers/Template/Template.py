@@ -9,7 +9,7 @@ from WebotsSim.libraries.MyRobot import MyRobot
 robot = MyRobot()
 
 # Loads the environment from the maze file
-maze_file = 'worlds/mazes/Labs/Lab3/Lab3_Task2_2.xml'
+maze_file = 'worlds/mazes/Labs/Lab1/Lab1_Task1.xml'
 robot.load_environment(maze_file)
 
 # Move robot to a random staring position listed in maze file

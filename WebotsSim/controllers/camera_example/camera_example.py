@@ -9,17 +9,24 @@ from WebotsSim.libraries.MyRobot import MyRobot
 robot = MyRobot()
 
 # Loads the environment from the maze file
-maze_files = ['worlds/mazes/Labs/Lab5/Lab5_Maze1.xml',
-              'worlds/mazes/Labs/Lab5/Lab5_Maze2.xml',
-              'worlds/mazes/Labs/Lab5/Lab5_Maze3.xml',
-              'worlds/mazes/Labs/Lab5/Lab5_EC1.xml',
-              'worlds/mazes/Labs/Lab5/Lab5_EC2.xml',
-              'worlds/mazes/MicroMouse/Maze1.xml',
-              'worlds/mazes/MicroMouse/Maze2.xml',
-              'worlds/mazes/MicroMouse/Maze3.xml',
-              'worlds/mazes/MicroMouse/Maze4.xml']
+maze_files = ['worlds/mazes/Labs/Lab1/Lab1_Task1.xml',
+              'worlds/mazes/Labs/Lab1/Lab1_EC.xml',
+              'worlds/mazes/Labs/Lab2/Lab2_Task1.xml',
+              'worlds/mazes/Labs/Lab2/Lab2_Task2_1.xml',
+              'worlds/mazes/Labs/Lab2/Lab2_Task2_2.xml',
+              'worlds/mazes/Labs/Lab2/Lab2_EC_1.xml',
+              'worlds/mazes/Labs/Lab2/Lab2_EC_2.xml',
+              'worlds/mazes/Labs/Lab3/Lab3_Task1.xml',
+              'worlds/mazes/Labs/Lab3/Lab3_Task2_1.xml',
+              'worlds/mazes/Labs/Lab3/Lab3_Task2_2.xml',
+              'worlds/mazes/Labs/Lab4/Lab4_Task1_1.xml',
+              'worlds/mazes/Labs/Lab4/Lab4_Task1_2.xml',
+              'worlds/mazes/Labs/Lab4/Lab4_Task1_3.xml',
+              'worlds/mazes/Labs/Lab4/Lab4_Task2_1.xml',
+              'worlds/mazes/Labs/Lab4/Lab4_Task2_2.xml',
+              ]
 
-robot.load_environment(maze_files[-1])
+robot.load_environment(maze_files[-5])
 
 # Move robot to a random staring position listed in maze file
 robot.move_to_start()
