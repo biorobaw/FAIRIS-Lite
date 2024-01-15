@@ -1,5 +1,9 @@
 import math
 from random import *
+import matplotlib.pyplot as plt
+from matplotlib import collections as pycol
+from matplotlib import patches
+from matplotlib.ticker import (AutoMinorLocator, MultipleLocator)
 
 from WebotsSim.libraries.RobotLib.MazeAndPcsParcer import parse_maze
 
@@ -13,6 +17,7 @@ class Maze:
         self.starting_location = []
         self.goal_locations = []
         self.obstacles = []
+        self.walls = []
         self.landmarks = []
 
         walls, goals, start_positions, landmarks = parse_maze(maze_file)
@@ -22,6 +27,7 @@ class Maze:
                 self.boundary_walls.append(BoundaryWall(row['x1'], row['y1'], row['x2'], row['y2'], id=index))
             else:
                 self.obstacles.append(Obstacle(row['x1'], row['y1'], row['x2'], row['y2'], id=index - 4))
+            self.walls.append([(row['x1'], row['y1']), (row['x2'], row['y2'])])
 
         for index, row in start_positions.iterrows():
             self.starting_location.append(StartingPosition(row['x'], row['y'], row['theta']))
@@ -35,7 +41,40 @@ class Maze:
     # Returns random starting positions
     def get_random_starting_position(self):
         return sample(self.starting_location, 1)[0]
+    def make_maze_plot(self, display_width, display_height):
 
+        self.maze_figure, self.maze_figure_ax = plt.subplots(1, 1, figsize=(display_width / 100, display_height / 100))
+
+        self.maze_figure_ax.add_collection(pycol.LineCollection(self.walls, linewidths=2))
+
+        # for point in self.starting_location:
+        #     new_crc = patches.Circle((point.x, point.y), radius=.05, color='green')
+        #     self.maze_figure_ax.add_patch(new_crc)
+        for point in self.landmarks:
+            if point.color == [1,0,0]:
+                color = 'red'
+            elif point.color == [0,1,0]:
+                color = 'green'
+            elif point.color == [0,0,1]:
+                color = 'blue'
+            else:
+                color = 'yellow'
+
+            new_crc = patches.Circle((point.x, point.y), radius=point.radius, color=color)
+            self.maze_figure_ax.add_patch(new_crc)
+        # for point in self.goal_locations:
+        #     new_crc = patches.Circle((point.x, point.y), radius=.05, color='red')
+        #     self.maze_figure_ax.add_patch(new_crc)
+
+        # self.maze_figure_ax.set_ylim(-4.25, 4.25)
+        # self.maze_figure_ax.set_xlim(-4.25, 4.25)
+        self.maze_figure_ax.xaxis.set_major_locator(MultipleLocator(1))
+        self.maze_figure_ax.yaxis.set_major_locator(MultipleLocator(1))
+        self.maze_figure_ax.grid(which='major', color='#CCCCCC', linestyle='--')
+        self.maze_figure_ax.margins(0.1)
+
+    def close_maze_figure(self):
+        plt.close(self.maze_figure)
 
 class Point:
     def __init__(self, x, y):

@@ -8,10 +8,12 @@
     <wall x1="2.0" y1="2" x2="2.0" y2="-2" />
     <wall x1="-2.0" y1="2" x2="-2.0" y2="-2" />
 
-    <landmark x="-2.0" y="2.0" height="2" red="1" green="1" blue="0" />
-    <landmark x="-2.0" y="-2.0" height="2" red="0" green="1" blue="0" />
-    <landmark x="2.0" y="2.0" height="2" red="1" green="0" blue="0" />
-    <landmark x="2.0" y="-2.0" height="2" red="0" green="0" blue="1" />
+    <wall x1="1" y1="1" x2="1" y2="0" />
+    <wall x1="-1" y1="1" x2="1" y2="1" />
+    <wall x1="-1" y1="1" x2="-1" y2="-1" />
+    <wall x1="-1" y1="-1" x2="2" y2="-1" />
+
+
 
     <startPositions>
         <pos x="1.5" y="-1.5" theta="1.57" />
