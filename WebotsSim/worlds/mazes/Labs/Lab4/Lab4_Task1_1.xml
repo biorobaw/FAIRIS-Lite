@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="us-ascii"?>
+
+<world>
+
+
+    <wall x1="-2.0" y1="-2" x2="2.0" y2="-2" />
+    <wall x1="-2.0" y1="2" x2="2.0" y2="2" />
+    <wall x1="2.0" y1="2" x2="2.0" y2="-2" />
+    <wall x1="-2.0" y1="2" x2="-2.0" y2="-2" />
+
+    <landmark x="-2.0" y="2.0" height="10" red="1" green="1" blue="0" />
+    <landmark x="2.0" y="2.0" height="10" red="1" green="0" blue="0" />
+    <landmark x="-2.0" y="-2.0" height="10" red="0" green="1" blue="0" />
+    <landmark x="2.0" y="-2.0" height="10" red="0" green="0" blue="1" />
+
+    <startPositions>
+        <pos x="1.5" y="-1.5" theta="1.57" />
+        <pos x="1.5" y="-0.5" theta="1.57" />
+        <pos x="1.5" y="1.5" theta="1.57" />
+        <pos x="1.5" y="0.5" theta="1.57" />
+        <pos x="0.5" y="-1.5" theta="1.57" />
+        <pos x="0.5" y="-0.5" theta="1.57" />
+        <pos x="0.5" y="1.5" theta="1.57" />
+        <pos x="0.5" y="0.5" theta="1.57" />
+        <pos x="-0.5" y="-1.5" theta="1.57" />
+        <pos x="-0.5" y="-0.5" theta="1.57" />
+        <pos x="-0.5" y="1.5" theta="1.57" />
+        <pos x="-0.5" y="0.5" theta="1.57" />
+        <pos x="-1.5" y="-1.5" theta="1.57" />
+        <pos x="-1.5" y="-0.5" theta="1.57" />
+        <pos x="-1.5" y="1.5" theta="1.57" />
+        <pos x="-1.5" y="0.5" theta="1.57" />
+    </startPositions>
+
+
+</world>
