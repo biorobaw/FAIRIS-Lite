@@ -7,7 +7,7 @@ os.chdir("../")
 
 if platform.system() == 'Windows':
 	try:
-		os.system("python -m venv venv")
+		os.system("python3.10 -m venv venv")
 	except:
 		print("Unable to set up Python venv, exiting with ERROR:1")
 		print("User may need to set up python vevn sepratly")
