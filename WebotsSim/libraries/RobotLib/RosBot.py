@@ -130,7 +130,7 @@ class RosBot(Supervisor):
         return round(bearing)
 
     # Reads current encoder readings and return an array of encoder positions:
-    #   [front_left, front_right, rear_right, rear_right]
+    #   [front_left, front_right, rear_left, rear_right]
     def get_encoder_readings(self):
         return [readings.getValue() for readings in self.all_encoders]
 
