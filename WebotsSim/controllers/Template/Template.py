@@ -1,5 +1,4 @@
 # Import MyRobot Class
-# from WebotsSim.libraries.robot_lib.my_robot import MyRobot
 from fairis_tools.my_robot import MyRobot
 # Create the robot instance.
 robot = MyRobot()
