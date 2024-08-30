@@ -109,7 +109,34 @@ This script will:
 - Install all required libraries in the virtual environment.
 - Add paths to the `fairis_tools` and `fairis_lib` packages.
 
-### 3. Install FAIRIS-Lite Packages
+### 3. Activate Python Virtual environment
+
+After creating the virtual environment, you need to activate it before installing the FAIRIS-Lite packages.
+
+#### **Windows**:
+
+```shell
+FAIRIS-LITE\ $ venv\Scripts\activate
+```
+
+#### **macOS/Linux**:
+
+```shell
+FAIRIS-LITE$ source venv/bin/activate
+```
+
+You should now see your terminal prompt change to indicate that the virtual environment is active (e.g., `(venv)` at the start of your command line).
+
+
+### 5. Install FAIRIS-Lite Packages
+
+With the virtual environment activated, you can now install the FAIRIS-Lite packages:
+
+```shell
+pip install .
+```
+
+### 4. Install FAIRIS-Lite Packages
 
 With the virtual environment activated, install the FAIRIS-Lite packages:
 
@@ -121,7 +148,7 @@ This command will install the `fairis_tools` and `fairis_lib` packages, making a
 
 Here's the revised section with your adjustments:
 
-### 4. Configure Webots
+### 5. Configure Webots
 
 You can configure Webots to use the correct Python environment in two ways: by running an automatic script or manually creating the necessary `runtime.ini` files in each controller directory.
 

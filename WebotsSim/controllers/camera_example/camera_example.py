@@ -1,32 +1,28 @@
-# Changes Working Directory to be at the root of FAIRIS-Lite
-import os
-os.chdir("../..")
-
 # Import MyRobot Class
-from fairis_tools import MyRobot
+from fairis_tools.my_robot import MyRobot
 
 # Create the robot instance.
 robot = MyRobot()
 
 # Loads the environment from the maze file
-maze_files = ['worlds/mazes/Labs/Lab1/Lab1_Task1.xml',
-              'worlds/mazes/Labs/Lab1/Lab1_EC.xml',
-              'worlds/mazes/Labs/Lab2/Lab2_Task1.xml',
-              'worlds/mazes/Labs/Lab2/Lab2_Task2_1.xml',
-              'worlds/mazes/Labs/Lab2/Lab2_Task2_2.xml',
-              'worlds/mazes/Labs/Lab2/Lab2_EC_1.xml',
-              'worlds/mazes/Labs/Lab2/Lab2_EC_2.xml',
-              'worlds/mazes/Labs/Lab3/Lab3_Task1.xml',
-              'worlds/mazes/Labs/Lab3/Lab3_Task2_1.xml',
-              'worlds/mazes/Labs/Lab3/Lab3_Task2_2.xml',
-              'worlds/mazes/Labs/Lab4/Lab4_Task1_1.xml',
-              'worlds/mazes/Labs/Lab4/Lab4_Task1_2.xml',
-              'worlds/mazes/Labs/Lab4/Lab4_Task1_3.xml',
-              'worlds/mazes/Labs/Lab4/Lab4_Task2_1.xml',
-              'worlds/mazes/Labs/Lab4/Lab4_Task2_2.xml',
-              'worlds/mazes/Labs/Lab5/Lab5_SmallMaze1.xml',
-              'worlds/mazes/Labs/Lab5/Lab5_SmallMaze2.xml',
-              'worlds/mazes/Labs/Lab5/Lab5_LargeMaze.xml',
+maze_files = ['../../worlds/mazes/Labs/Lab1/Lab1_Task1.xml',
+              '../../worlds/mazes/Labs/Lab1/Lab1_EC.xml',
+              '../../worlds/mazes/Labs/Lab2/Lab2_Task1.xml',
+              '../../worlds/mazes/Labs/Lab2/Lab2_Task2_1.xml',
+              '../../worlds/mazes/Labs/Lab2/Lab2_Task2_2.xml',
+              '../../worlds/mazes/Labs/Lab2/Lab2_EC_1.xml',
+              '../../worlds/mazes/Labs/Lab2/Lab2_EC_2.xml',
+              '../../worlds/mazes/Labs/Lab3/Lab3_Task1.xml',
+              '../../worlds/mazes/Labs/Lab3/Lab3_Task2_1.xml',
+              '../../worlds/mazes/Labs/Lab3/Lab3_Task2_2.xml',
+              '../../worlds/mazes/Labs/Lab4/Lab4_Task1_1.xml',
+              '../../worlds/mazes/Labs/Lab4/Lab4_Task1_2.xml',
+              '../../worlds/mazes/Labs/Lab4/Lab4_Task1_3.xml',
+              '../../worlds/mazes/Labs/Lab4/Lab4_Task2_1.xml',
+              '../../worlds/mazes/Labs/Lab4/Lab4_Task2_2.xml',
+              '../../worlds/mazes/Labs/Lab5/Lab5_SmallMaze1.xml',
+              '../../worlds/mazes/Labs/Lab5/Lab5_SmallMaze2.xml',
+              '../../worlds/mazes/Labs/Lab5/Lab5_LargeMaze.xml',
               ]
 
 robot.load_environment(maze_files[-8])
