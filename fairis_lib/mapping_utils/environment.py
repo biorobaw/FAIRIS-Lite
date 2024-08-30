@@ -5,7 +5,7 @@ from matplotlib import collections as pycol
 from matplotlib import patches
 from matplotlib.ticker import (MultipleLocator)
 
-from WebotsSim.libraries.mapping_utils.maze_parser import parse_maze
+from fairis_lib.mapping_utils.maze_parser import parse_maze
 
 
 class Maze:

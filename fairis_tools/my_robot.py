@@ -1,4 +1,4 @@
-from WebotsSim.libraries.robot_lib.rosbot import RosBot
+from fairis_lib.robot_lib.rosbot import RosBot
 
 
 class MyRobot(RosBot):

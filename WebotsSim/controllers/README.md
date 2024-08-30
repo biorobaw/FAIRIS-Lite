@@ -34,13 +34,15 @@ This guide assumes that you have already preformed the [FAIRIS-Lite Setup](../..
 ![img.png](../../docs/figs/runtime.png)
 
 8. We recomend that you include the following lines in your new Python controller.
+
 ```python
 # Changes Working Directory to be at the root of FAIRIS-Lite
 import os
+
 os.chdir("../..")
 
 # Import MyRobot Class
-from WebotsSim.libraries.MyRobot import MyRobot
+from fairis_tools import MyRobot
 
 # Create the robot instance.
 robot = MyRobot()

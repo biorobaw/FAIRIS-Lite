@@ -1,6 +1,8 @@
-from WebotsSim.libraries.mapping_utils.environment import *
-from controller import Supervisor
+import math
+import matplotlib.pyplot as plt
 
+from controller import Supervisor
+from fairis_lib.mapping_utils.environment import Maze
 
 # Custom Class of RosBot offered by Webots
 #   Webots: https://www.cyberbotics.com/doc/guide/rosbot

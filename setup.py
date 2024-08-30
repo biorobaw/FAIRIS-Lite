@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name="fairis_lite",
     version="1.0",
-    packages=find_packages(),
+    packages=find_packages(include=["fairis_tools", "fairis_tools.*", "fairis_lib", "fairis_lib.*"]),
     install_requires=[
         "numpy",
         "opencv-python",

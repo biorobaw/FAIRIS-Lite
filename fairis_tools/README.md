@@ -12,7 +12,7 @@ More information on specifications is available on [Webot's Documentation](https
 
 ## ROSbot Features
 
-![img.png](../../docs/figs/rosbotspecs.png)
+![img.png](../docs/figs/rosbotspecs.png)
 
 |Characteristics	| Values |
 | --- | --- |
@@ -40,7 +40,7 @@ them for use. We also provide setters and getters to easily access the sensors, 
 provide a full description of all attributes and class functions that are provided. 
 
 
-![img.png](../../docs/figs/rosot_system.png)
+![img.png](../docs/figs/rosot_system.png)
 
 # RosBot Python Class Documentation
 
@@ -54,7 +54,7 @@ This class inherits from the Webots `Supervisor` class and encapsulates function
 
 ```python
 from controller import Supervisor
-from WebotsSim.libraries.robot_lib.Environment import *
+from fairis_lib.robot_lib import *
 import matplotlib.pyplot as plt
 ```
 
@@ -199,10 +199,11 @@ Here is a basic usage example:
 ```python
 # Changes Working Directory to be at the root of FAIRIS-Lite
 import os
-os.chdir("../..")
+
+os.chdir("..")
 
 # Import MyRobot Class
-from WebotsSim.libraries.MyRobot import MyRobot
+from fairis_tools import MyRobot
 
 # Create the robot instance.
 robot = MyRobot()
@@ -241,7 +242,7 @@ while robot.experiment_supervisor.step(robot.timestep) != -1:
     robot.set_front_right_motor_velocity(20)
 
     # Calculates distance the wheel has turned since beginning of simulation
-    distance_front_left_wheel_traveled = robot.wheel_radius * robot.get_front_left_motor_encoder_reading() 
+    distance_front_left_wheel_traveled = robot.wheel_radius * robot.get_front_left_motor_encoder_reading()
 
     # Stops the robot after the robot moves a distance of 1.5 meters
     if distance_front_left_wheel_traveled > 1.5:
@@ -256,7 +257,7 @@ This documentation provides an overview of the `RosBot` class and its methods, a
 # Extending the RosBot Class
 Within FAIRIS-Lite, an additional Python class named MyRobot is available. This class is designed to build upon the 
 functionalities of the RosBot class, offering further customization for your specific use cases. You can find the 
-source code for this class in the file [FAIRIS-LITE/WebotsSim/libraries/MyRobot.py](MyRobot.py).
+source code for this class in the file [FAIRIS-LITE/fairis_tools/my_robot.py](MyRobot.py).
 
 For smoother development, we recommend that you augment this class with your custom functions. Since MyRobot is 
 derived from the RosBot class, all the functions detailed above will be at your disposal in this extended class. 
