@@ -36,19 +36,14 @@ This guide assumes that you have already preformed the [FAIRIS-Lite Setup](../..
 8. We recomend that you include the following lines in your new Python controller.
 
 ```python
-# Changes Working Directory to be at the root of FAIRIS-Lite
-import os
-
-os.chdir("../..")
-
 # Import MyRobot Class
-from fairis_tools import MyRobot
+from fairis_tools.my_robot import MyRobot
 
 # Create the robot instance.
 robot = MyRobot()
 
 # Loads the environment from the maze file
-maze_file = 'path/to/maze/file.xml'
+maze_file = '../../path/to/maze/file.xml'
 robot.load_environment(maze_file)
 
 # Move robot to a random staring position listed in maze file
