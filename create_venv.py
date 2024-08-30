@@ -48,14 +48,5 @@ def main():
     python_executable = find_python_version()
     create_venv(python_executable)
 
-    venv_path = ""
-    if platform.system() == 'Windows':
-        venv_path = os.path.join("venv", "Lib")
-    else:
-        venv_path = os.path.join("venv", "lib", f"python{sys.version_info.major}.{sys.version_info.minor}")
-
-    add_fairis_to_path(project_path, venv_path)
-
-
 if __name__ == "__main__":
     main()

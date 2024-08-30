@@ -3,8 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name="fairis_lite",
     version="1.0",
-    packages=find_packages(where="WebotsSim/libraries"),
-    package_dir={"": "WebotsSim/libraries"},
+    packages=find_packages(),
     install_requires=[
         "numpy",
         "opencv-python",
