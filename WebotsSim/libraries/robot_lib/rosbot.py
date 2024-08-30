@@ -1,8 +1,4 @@
-import math
-
-import matplotlib.pyplot as plt
-
-from WebotsSim.libraries.RobotLib.Environment import *
+from WebotsSim.libraries.mapping_utils.environment import *
 from controller import Supervisor
 
 

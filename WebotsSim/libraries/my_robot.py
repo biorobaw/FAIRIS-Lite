@@ -1,8 +1,10 @@
-from WebotsSim.libraries.RobotLib.RosBot import RosBot
+from WebotsSim.libraries.robot_lib.rosbot import RosBot
 
 
 class MyRobot(RosBot):
 
     def __init__(self):
         RosBot.__init__(self)
+
+
 

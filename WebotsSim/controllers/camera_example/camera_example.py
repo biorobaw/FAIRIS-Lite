@@ -24,12 +24,21 @@ maze_files = ['worlds/mazes/Labs/Lab1/Lab1_Task1.xml',
               'worlds/mazes/Labs/Lab4/Lab4_Task1_3.xml',
               'worlds/mazes/Labs/Lab4/Lab4_Task2_1.xml',
               'worlds/mazes/Labs/Lab4/Lab4_Task2_2.xml',
+              'worlds/mazes/Labs/Lab5/Lab5_SmallMaze1.xml',
+              'worlds/mazes/Labs/Lab5/Lab5_SmallMaze2.xml',
+              'worlds/mazes/Labs/Lab5/Lab5_LargeMaze.xml',
               ]
 
-robot.load_environment(maze_files[-5])
+robot.load_environment(maze_files[-8])
 
 # Move robot to a random staring position listed in maze file
 robot.move_to_start()
+
+start_pos = robot.starting_position
+x = start_pos.x
+y = start_pos.y
+theta = start_pos.theta
+print(x,y,theta)
 
 # Main Control Loop for Robot
 while robot.experiment_supervisor.step(robot.timestep) != -1:
