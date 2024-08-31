@@ -13,7 +13,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation -0.5773483729639887 0.5773487070940025 0.5773537274953012 2.094325684440625
-  position -0.00041041333872331187 -0.0004157397756639894 14.742070906127257
+  position -0.0016751854872641431 -0.00199924248913596 49.11549853831149
 }
 TexturedBackground {
 }
@@ -22,7 +22,7 @@ TexturedBackgroundLight {
 }
 Floor {
   name "Maze Floor"
-  size 16 16
+  size 17 17
   tileSize 2 2
 }
 DEF Agent Rosbot {

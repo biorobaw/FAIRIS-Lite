@@ -12,6 +12,8 @@ setup(
         "matplotlib",
         "astar",
         "pandas",
+        "jupyter",
+        "shapely"
     ],
     author="Chance J Hamilton",
     description="FAIRIS-Lite: A framework for cognitive mapping and navigation using Webots simulator.",
