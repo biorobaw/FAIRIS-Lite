@@ -138,7 +138,7 @@ pip install .
 
 ### 4. Install FAIRIS-Lite Packages
 
-With the virtual environment activated, install the FAIRIS-Lite packages:
+#### a. With the virtual environment activated, install the FAIRIS-Lite packages:
 
 ```shell
 pip install .
@@ -146,7 +146,14 @@ pip install .
 
 This command will install the `fairis_tools` and `fairis_lib` packages, making all classes and functions available for use in your Webots controllers.
 
-Here's the revised section with your adjustments:
+#### b. clean up after the installation of FAIRIS-Lite packages:
+
+```shell
+rm -r build/ fairis_lite.egg-info/ 
+```
+
+This command will remove the build and fairis_lite.egg-info directories that are automatically generated during the 
+installation process.  
 
 ### 5. Configure Webots
 
