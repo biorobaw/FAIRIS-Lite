@@ -28,12 +28,17 @@ def parse_all_goals(root):
     return pd.concat(valid_data_frames, ignore_index=True)
 
 def parse_wall(xml_wall):
-    data = [[float(xml_wall.get(coord)) for coord in ['x1', 'y1', 'x2', 'y2']]]
-    return pd.DataFrame(data=data, columns=['x1', 'y1', 'x2', 'y2'])
+    x1 = float(xml_wall.get('x1'))
+    y1 = float(xml_wall.get('y1'))
+    x2 = float(xml_wall.get('x2'))
+    y2 = float(xml_wall.get('y2'))
+    width = float(xml_wall.get('width', 0.012))  # Default width is 0.012 if not specified
+    data = [[x1, y1, x2, y2, width]]
+    return pd.DataFrame(data=data, columns=['x1', 'y1', 'x2', 'y2', 'width'])
 
-def parse_all_obsticles(xml_root):
+def parse_all_obstacles(xml_root):
     # Define the columns for the DataFrame
-    columns = ['x1', 'y1', 'x2', 'y2']
+    columns = ['x1', 'y1', 'x2', 'y2', 'width']
 
     # Parse each wall and create a list of DataFrames
     data_frames = [parse_wall(xml_wall) for xml_wall in xml_root.findall('wall')]
@@ -90,7 +95,7 @@ def parse_all_positions(xml_positions):
 def parse_maze(file):
     root = ET.parse(file).getroot()
     start_positions = parse_all_positions(root.find('startPositions'))
-    walls = parse_all_obsticles(root)
+    walls = parse_all_obstacles(root)
     goals = parse_all_goals(root)
     landmarks = parse_all_landmarks(root)
 

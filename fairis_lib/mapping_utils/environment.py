@@ -23,10 +23,7 @@ class Maze:
         walls, goals, start_positions, landmarks = parse_maze(maze_file)
 
         for index, row in walls.iterrows():
-            if index <= 3:
-                self.boundary_walls.append(BoundaryWall(row['x1'], row['y1'], row['x2'], row['y2'], id=index))
-            else:
-                self.obstacles.append(Obstacle(row['x1'], row['y1'], row['x2'], row['y2'], id=index - 4))
+            self.obstacles.append(Obstacle(row['x1'], row['y1'], row['x2'], row['y2'],width=row['width'], id= index))
             self.walls.append([(row['x1'], row['y1']), (row['x2'], row['y2'])])
 
         for index, row in start_positions.iterrows():
