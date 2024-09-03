@@ -128,14 +128,6 @@ FAIRIS-LITE$ source venv/bin/activate
 You should now see your terminal prompt change to indicate that the virtual environment is active (e.g., `(venv)` at the start of your command line).
 
 
-### 5. Install FAIRIS-Lite Packages
-
-With the virtual environment activated, you can now install the FAIRIS-Lite packages:
-
-```shell
-pip install .
-```
-
 ### 4. Install FAIRIS-Lite Packages
 
 #### a. With the virtual environment activated, install the FAIRIS-Lite packages:
@@ -164,7 +156,7 @@ You can configure Webots to use the correct Python environment in two ways: by r
 Simply run the provided script to automatically create and configure the `runtime.ini` files in all controller directories:
 
 ```shell
-python2 add_runtime_ini.py
+python3 add_runtime_ini.py
 ```
 
 This script will:
