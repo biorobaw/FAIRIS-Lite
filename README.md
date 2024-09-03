@@ -22,7 +22,7 @@ To work with FAIRIS-Lite, ensure that your system meets the following requiremen
   5. Once installed, verify the installation by opening Command Prompt and typing:
   
    ```shell
-   python --version
+   python3 --version
    ```
 
   - This should return `Python 3.10.x` if installed correctly.
@@ -101,7 +101,7 @@ cd path_to/FAIRIS-Lite
 Run the provided script to create a Python virtual environment using Python 3.10+ and install all necessary dependencies.
 
 ```shell
-python create_venv.py
+python3 create_venv.py
 ```
 
 This script will:
@@ -164,7 +164,7 @@ You can configure Webots to use the correct Python environment in two ways: by r
 Simply run the provided script to automatically create and configure the `runtime.ini` files in all controller directories:
 
 ```shell
-python add_runtime_ini.py
+python2 add_runtime_ini.py
 ```
 
 This script will:
