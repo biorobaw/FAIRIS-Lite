@@ -1,5 +1,5 @@
 import os
-
+import platform
 
 def add_runtime_ini_to_dirs(controllers_dir, python_venv_path):
     for dirpath, dirnames, _ in os.walk(controllers_dir):
@@ -16,7 +16,10 @@ def add_runtime_ini_to_dirs(controllers_dir, python_venv_path):
 
 def main():
     project_path = os.getcwd()
-    python_venv_path = os.path.join(project_path, "venv", "bin", "python3")
+    if platform.system() == 'Windows':
+        python_venv_path = os.path.join(project_path, "venv", "Scripts", "python.exe")
+    else:
+        python_venv_path = os.path.join(project_path, "venv", "bin", "python3")
     controllers_dir = os.path.join(project_path, "WebotsSim", "controllers")
 
     add_runtime_ini_to_dirs(controllers_dir, python_venv_path)
