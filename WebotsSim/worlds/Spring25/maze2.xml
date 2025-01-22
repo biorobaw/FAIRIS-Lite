@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<world>
+  <wall x1="-3.5" y1="0.5" x2="3.5" y2="0.5"/>
+  <wall x1="-3.5" y1="-0.5" x2="3.5" y2="-0.5"/>
+  <wall x1="-3.5" y1="0.5" x2="-3.5" y2="-0.5"/>
+  <wall x1="3.5" y1="0.5" x2="3.5" y2="-0.5"/>
+  <startPositions>
+    <pos x="-3.0" y="0.0" theta="0"/>
+  </startPositions>
+  <goal id="1" x="3.0" y="0.0"/>
+</world>
