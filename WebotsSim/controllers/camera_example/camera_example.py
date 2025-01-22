@@ -5,27 +5,19 @@ from fairis_tools.my_robot import MyRobot
 robot = MyRobot()
 
 # Loads the environment from the maze file
-maze_files = ['../../worlds/mazes/Labs/Lab1/Lab1_Task1.xml',
-              '../../worlds/mazes/Labs/Lab1/Lab1_EC.xml',
-              '../../worlds/mazes/Labs/Lab2/Lab2_Task1.xml',
-              '../../worlds/mazes/Labs/Lab2/Lab2_Task2_1.xml',
-              '../../worlds/mazes/Labs/Lab2/Lab2_Task2_2.xml',
-              '../../worlds/mazes/Labs/Lab2/Lab2_EC_1.xml',
-              '../../worlds/mazes/Labs/Lab2/Lab2_EC_2.xml',
-              '../../worlds/mazes/Labs/Lab3/Lab3_Task1.xml',
-              '../../worlds/mazes/Labs/Lab3/Lab3_Task2_1.xml',
-              '../../worlds/mazes/Labs/Lab3/Lab3_Task2_2.xml',
-              '../../worlds/mazes/Labs/Lab4/Lab4_Task1_1.xml',
-              '../../worlds/mazes/Labs/Lab4/Lab4_Task1_2.xml',
-              '../../worlds/mazes/Labs/Lab4/Lab4_Task1_3.xml',
-              '../../worlds/mazes/Labs/Lab4/Lab4_Task2_1.xml',
-              '../../worlds/mazes/Labs/Lab4/Lab4_Task2_2.xml',
-              '../../worlds/mazes/Labs/Lab5/Lab5_SmallMaze1.xml',
-              '../../worlds/mazes/Labs/Lab5/Lab5_SmallMaze2.xml',
-              '../../worlds/mazes/Labs/Lab5/Lab5_LargeMaze.xml',
+maze_files = ['../../worlds/mazes/Spring25/maze1.xml',
+              '../../worlds/mazes/Spring25/maze2.xml',
+              '../../worlds/mazes/Spring25/maze3.xml',
+              '../../worlds/mazes/Spring25/maze4.xml',
+              '../../worlds/mazes/Spring25/maze5.xml',
+              '../../worlds/mazes/Spring25/maze6.xml',
+              '../../worlds/mazes/Spring25/maze7.xml',
+              '../../worlds/mazes/Spring25/maze8.xml',
+              '../../worlds/mazes/Spring25/maze9.xml',
+              '../../worlds/mazes/Spring25/maze10.xml'
               ]
 
-robot.load_environment(maze_files[-8])
+robot.load_environment(maze_files[5])
 
 # Move robot to a random staring position listed in maze file
 robot.move_to_start()
