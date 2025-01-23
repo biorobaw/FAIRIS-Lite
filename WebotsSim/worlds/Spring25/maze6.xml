@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="us-ascii"?>
+
+<world>
+    <wall x1="-4.5" y1="2" x2="4.5" y2="2" width="1" />
+    <wall x1="0" y1="1.5" x2="0" y2="-1.5" width="1" />
+    <wall x1="-2.5" y1="-2" x2="0.5" y2="-2" width="1" />
+    <wall x1="4" y1="1.5" x2="4" y2="-1.5" width="1" />
+    <wall x1="4.5" y1="-2" x2="2.5" y2="-2" width="1" />
+    <wall x1="-4" y1="1.5" x2="-4" y2="-2.5" width="1" />
+
+
+    <landmark x="-2" y="0" height="5" red="1" green="1" blue="0" />
+
+    <startPositions>
+        <pos x="3" y="1" theta="1.57079633" />
+    </startPositions>
+</world>
