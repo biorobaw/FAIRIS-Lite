@@ -18,7 +18,7 @@ More information on specifications is available on [Webot's Documentation](https
 | --- | --- |
 |Length |	200 mm |
 |Width |	235 mm |
-|Standard Wheel Diameter/Radius |	86 / 43 mm |
+|Wheel Diameter/Radius |	86 / 43 mm |
 |Axel Width | 265 mm |
 |Height	| 220 mm |
 |Weight	| 2.84 kg |
