@@ -21,7 +21,7 @@ More information on specifications is available on [Webot's Documentation](https
 |Axel Width | 265 mm |
 |Height	| 220 mm |
 |Weight	| 2.84 kg |
-|Max. forward/backward wheel speed	| 1 m/s |
+|Max. forward/backward wheel speed	| 1.118 m/s |
 |Max. forward/backward motor speed	| 26 rad/s |
 
 The ROSbot motors are RotationalMotor nodes, each associated with a PositionSensor. They are named the following way:
