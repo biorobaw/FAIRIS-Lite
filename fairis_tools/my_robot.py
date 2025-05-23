@@ -1,7 +1,7 @@
-from fairis_lib.robot_lib.rosbot import RosBot
+from fairis_lib.robot_lib.hambot import HamBot
 
 
-class MyRobot(RosBot):
+class MyRobot(HamBot):
 
     def __init__(self):
-        RosBot.__init__(self)
+        HamBot.__init__(self)

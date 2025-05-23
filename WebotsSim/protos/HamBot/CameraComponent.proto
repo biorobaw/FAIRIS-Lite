@@ -1,0 +1,67 @@
+#VRML_SIM R2025a utf8
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Plastic.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/GlossyPaint.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Rubber.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Plastic.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/BrushedAluminium.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Pcb.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/ScuffedPlastic.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/MattePaint.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/ScrewThread.proto"
+PROTO CameraComponent [
+  field SFVec3f    translation 0 0 0
+  field SFRotation rotation    0 1 0 0
+]
+{
+  Pose {
+    translation IS translation
+    rotation IS rotation
+    children [
+      Group {
+        children [
+          Shape {
+            appearance BrushedAluminium {
+              colorOverride 0.204 0.549 0.086
+            }
+            geometry Mesh {
+              url [ "models/Camera/camera_0.obj" ]
+            }
+          }
+          Shape {
+            appearance BrushedAluminium {
+              colorOverride 0 0 0
+            }
+            geometry Mesh {
+              url [ "models/Camera/camera_1.obj" ]
+            }
+          }
+          Shape {
+            appearance Plastic {
+              colorOverride 0 0 0
+              type  "rough"
+            }
+            geometry Mesh {
+              url [ "models/Camera/camera_2.obj" ]
+            }
+          }
+          Shape {
+            appearance BrushedAluminium {
+              colorOverride  0 0 0
+            }
+            geometry Mesh {
+              url [ "models/Camera/camera_3.obj" ]
+            }
+          }
+          Shape {
+            appearance ScrewThread {
+              colorOverride 0.722 0.451 0.2
+            }
+            geometry Mesh {
+              url [ "models/Camera/camera_4.obj" ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

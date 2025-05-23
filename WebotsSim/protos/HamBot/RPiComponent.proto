@@ -1,0 +1,138 @@
+#VRML_SIM R2025a utf8
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Plastic.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/GlossyPaint.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Rubber.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Plastic.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/BrushedAluminium.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Pcb.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/ScuffedPlastic.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/MattePaint.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/ScrewThread.proto"
+PROTO RPiComponent [
+  field SFVec3f    translation 0 0 0
+  field SFRotation rotation    0 1 0 0
+]
+{
+  Pose {
+    translation IS translation
+    rotation IS rotation
+    children [
+      Group {
+        children [
+          Shape {
+            appearance BrushedAluminium {
+              colorOverride 0.0 0.0 0.0
+            }
+            geometry Mesh {
+              url [ "models/RPi/rpi_0.obj" ]
+            }
+          }
+          Shape {
+            appearance BrushedAluminium {
+              colorOverride 0.204 0.549 0.086
+            }
+            geometry Mesh {
+              url [ "models/RPi/rpi_1.obj" ]
+            }
+          }
+          Shape {
+            appearance BrushedAluminium {
+              colorOverride 0.0 0.0 0.0
+            }
+            geometry Mesh {
+              url [ "models/RPi/rpi_2.obj" ]
+            }
+          }
+          Shape {
+            appearance BrushedAluminium {
+              colorOverride 0.0 0.0 0.0
+            }
+            geometry Mesh {
+              url [ "models/RPi/rpi_3.obj" ]
+            }
+          }
+          Shape {
+            appearance BrushedAluminium {
+
+            }
+            geometry Mesh {
+              url [ "models/RPi/rpi_4.obj" ]
+            }
+          }
+          Shape {
+            appearance BrushedAluminium {
+              colorOverride 0.0 0.0 0.0
+            }
+            geometry Mesh {
+              url [ "models/RPi/rpi_5.obj" ]
+            }
+          }
+          Shape {
+            appearance BrushedAluminium {
+              colorOverride 0.0 0.0 0.0
+            }
+            geometry Mesh {
+              url [ "models/RPi/rpi_6.obj" ]
+            }
+          }
+          Shape {
+            appearance BrushedAluminium {
+              colorOverride 0.0 0.0 0.0
+            }
+            geometry Mesh {
+              url [ "models/RPi/rpi_7.obj" ]
+            }
+          }
+          Shape {
+            appearance BrushedAluminium {
+              colorOverride 0.0 0.0 0.0
+            }
+            geometry Mesh {
+              url [ "models/RPi/rpi_8.obj" ]
+            }
+          }
+          Shape {
+            appearance BrushedAluminium {
+              colorOverride 0.0 0.0 0.0
+            }
+            geometry Mesh {
+              url [ "models/RPi/rpi_9.obj" ]
+            }
+          }
+          Shape {
+            appearance BrushedAluminium {
+              colorOverride 0.0 0.0 0.0
+            }
+            geometry Mesh {
+              url [ "models/RPi/rpi_10.obj" ]
+            }
+          }
+          Shape {
+            appearance BrushedAluminium {
+              colorOverride 0.0 0.0 0.0
+            }
+            geometry Mesh {
+              url [ "models/RPi/rpi_11.obj" ]
+            }
+          }
+          Shape {
+            appearance BrushedAluminium {
+
+            }
+            geometry Mesh {
+              url [ "models/RPi/rpi_12.obj" ]
+            }
+          }
+          Shape {
+            appearance BrushedAluminium {
+
+            }
+            geometry Mesh {
+              url [ "models/RPi/rpi_13.obj" ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
