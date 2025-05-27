@@ -34,9 +34,9 @@ To work with FAIRIS-Lite, ensure that your system meets the following requiremen
    sudo apt-get install python3.10
    ```
 
-### 2. Cyberbotics Webots R2023b
+### 2. Cyberbotics Webots R2025a
 
-FAIRIS-Lite works in conjunction with Webots version R2023b. Ensure you install Webots correctly:
+FAIRIS-Lite works in conjunction with Webots version R2025a. Ensure you install Webots correctly:
 
 #### **Linux Users**:
 - **Do not install Webots from the Snap packaging** due to known compatibility issues. Instead, use the `.deb` 

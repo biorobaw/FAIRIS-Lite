@@ -5,9 +5,6 @@ from controller import Supervisor
 from fairis_lib.mapping_utils.environment import Maze
 
 # TODO fix this to point at docs on github
-# Custom Class of RosBot offered by Webots
-#   Webots: https://www.cyberbotics.com/doc/guide/rosbot
-#   Sepecs: https://husarion.com/manuals/rosbot/#specification
 class HamBot(Supervisor):
 
     # Initiilize an instance of Webots Harrison's RosBot

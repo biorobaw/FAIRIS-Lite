@@ -35,15 +35,15 @@ class RosBot(Supervisor):
         self.timestep = int(self.experiment_supervisor.getBasicTimeStep())
 
         # Webots Rotational Motors: https://cyberbotics.com/doc/reference/motor
-        self.front_left_motor = self.experiment_supervisor.getDevice('front left wheel motor')
+        self.left_motor = self.experiment_supervisor.getDevice('front left wheel motor')
         self.front_right_motor = self.experiment_supervisor.getDevice('front right wheel motor')
-        self.rear_left_motor = self.experiment_supervisor.getDevice('rear left wheel motor')
+        self.left_motor = self.experiment_supervisor.getDevice('rear left wheel motor')
         self.rear_right_motor = self.experiment_supervisor.getDevice('rear right wheel motor')
-        self.all_motors = [self.front_left_motor,
+        self.all_motors = [self.left_motor,
                            self.front_right_motor,
-                           self.rear_left_motor,
+                           self.left_motor,
                            self.rear_right_motor]
-        self.max_motor_velocity = self.rear_left_motor.getMaxVelocity()
+        self.max_motor_velocity = self.left_motor.getMaxVelocity()
 
         # Initialize robot's motors
         for motor in self.all_motors:
@@ -147,7 +147,7 @@ class RosBot(Supervisor):
 
     # Sets Front Left Motor Velocity (rad/sec)
     def set_front_left_motor_velocity(self, velocity, suppress=False):
-        self.front_left_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
+        self.left_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
 
     # Sets Front Right Motor Velocity (rad/sec)
     def set_front_right_motor_velocity(self, velocity, suppress=False):
@@ -155,21 +155,21 @@ class RosBot(Supervisor):
 
     # Sets Rear Left Motor Velocity (rad/sec)
     def set_rear_left_motor_velocity(self, velocity, suppress=False):
-        self.rear_left_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
+        self.left_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
 
     # Sets Rear Right Motor Velocity (rad/sec)
     def set_rear_right_motor_velocity(self, velocity, suppress=False):
         self.rear_right_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
 
     # Sets Right Motors Velocity (rad/sec)
-    def set_right_motors_velocity(self, velocity, suppress=False):
+    def set_right_motor_velocity(self, velocity, suppress=False):
         self.front_right_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
         self.rear_right_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
 
     # Sets Left Motors Velocity (rad/sec)
-    def set_left_motors_velocity(self, velocity, suppress=False):
-        self.front_left_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
-        self.rear_left_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
+    def set_left_motor_velocity(self, velocity, suppress=False):
+        self.left_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
+        self.left_motor.setVelocity(self.velocity_saturation(velocity, suppress=suppress))
 
     # Sets all motors speed to 0
     def stop(self):
