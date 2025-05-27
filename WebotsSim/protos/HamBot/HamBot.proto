@@ -28,7 +28,7 @@ PROTO HamBot [
   field  SFVec3f     translation     0 0 0
   field  SFRotation  rotation        0 0 1 1.57
   field  SFString    name            "HamBot"
-  field  SFString    controller      "hambot_controller"
+  field  SFString    controller      "Template"
   field  MFString    controllerArgs  []
   field  SFString    customData      ""
   field  SFBool      supervisor      TRUE
