@@ -1,3 +1,6 @@
+Here is the full raw Markdown content for the updated `README.md`:
+
+````markdown
 # FAIRIS-Lite
 
 FAIRIS-Lite is a project framework that allows you to implement navigational control logic directly on the open-source robotic simulation platform Webots. With this framework, you can create your own Webots controller without the need to set up a simulated environment or robot, as we provide all the materials required to get started.
@@ -23,46 +26,51 @@ To work with FAIRIS-Lite, ensure that your system meets the following requiremen
   
    ```shell
    python3 --version
-   ```
+````
 
-  - This should return `Python 3.10.x` if installed correctly.
+* This should return `Python 3.10.x` or higher if installed correctly.
 
 #### **Linux Users**:
-- **Ensure you have Python 3.10+ installed.** Most distributions can install it using the package manager:
-  
-   ```shell
-   sudo apt-get install python3.10
-   ```
+
+* **Ensure you have Python 3.10+ installed.** Most distributions can install it using the package manager:
+
+  ```shell
+  sudo apt-get install python3.10
+  ```
 
 ### 2. Cyberbotics Webots R2025a
 
 FAIRIS-Lite works in conjunction with Webots version R2025a. Ensure you install Webots correctly:
 
 #### **Linux Users**:
-- **Do not install Webots from the Snap packaging** due to known compatibility issues. Instead, use the `.deb` 
+
+* **Do not install Webots from the Snap packaging** due to known compatibility issues. Instead, use the `.deb`
   package or tarball for installation.
-- **Installation Instructions**:
-  - Follow the detailed installation guide [here](https://cyberbotics.com/doc/guide/installation-procedure#installation-on-linux).
+* **Installation Instructions**:
+
+  * Follow the detailed installation guide [here](https://cyberbotics.com/doc/guide/installation-procedure#installation-on-linux).
 
 #### **Windows and macOS Users**:
-- Download and install Webots R2023b from the official [Cyberbotics website](https://cyberbotics.com/#download).
+
+* Download and install Webots R2023b from the official [Cyberbotics website](https://cyberbotics.com/#download).
 
 ### 3. Git
 
 Ensure that you have Git installed to clone the FAIRIS-Lite repository:
 
-- **Windows**: Download and install Git from [git-scm.com](https://git-scm.com/download/win).
-- **Linux**: Install Git via your package manager:
-  
-   ```shell
-   sudo apt-get install git
-   ```
+* **Windows**: Download and install Git from [git-scm.com](https://git-scm.com/download/win).
 
-- **macOS**: Install Git via Homebrew:
-  
-   ```shell
-   brew install git
-   ```
+* **Linux**: Install Git via your package manager:
+
+  ```shell
+  sudo apt-get install git
+  ```
+
+* **macOS**: Install Git via Homebrew:
+
+  ```shell
+  brew install git
+  ```
 
 ---
 
@@ -80,103 +88,61 @@ Clone this repository onto your device. There are numerous ways to achieve this,
 git clone https://github.com/biorobaw/FAIRIS-Lite.git
 ```
 
-### 2. Set Up the Python Environment
+### 2. Run the Setup Script
 
-#### a. **Open a Terminal Session**
+Run the provided setup script to configure the project. This script:
 
-- **MacOS**: Press Command + Space Bar, type "Terminal" in Spotlight, and click to open the app.
-- **Linux**: Press Ctrl + Alt + T to instantly launch a Terminal window.
-- **Windows**: Press the Windows Key + R, type `cmd.exe`, and press Enter.
-
-#### b. **Navigate to the Project Directory**
-
-Change your directory to the root of the FAIRIS-Lite project:
-
-```shell
-cd path_to/FAIRIS-Lite
-```
-
-#### c. **Create a Python Virtual Environment**
-
-Run the provided script to create a Python virtual environment using Python 3.10+ and install all necessary dependencies.
+* Searches for Python 3.12+ (falls back to 3.11/3.10 if needed)
+* Creates a Python virtual environment
+* Adds the FAIRIS-Lite root directory to the Python path
+* Automatically generates `runtime.ini` files in all controller directories
 
 ```shell
 python3 create_venv.py
 ```
 
-This script will:
-- Search for Python 3.10+ on your system and use it to create a virtual environment.
-- Install all required libraries in the virtual environment.
-- Add paths to the `fairis_tools` and `fairis_lib` packages.
+You should see output indicating that the venv was created and that the `runtime.ini` files were added.
 
-### 3. Activate Python Virtual environment
+### 3. Activate Python Virtual Environment
 
-After creating the virtual environment, you need to activate it before installing the FAIRIS-Lite packages.
+After creating the virtual environment, you need to activate it before using the FAIRIS-Lite packages.
 
 #### **Windows**:
 
 ```shell
-FAIRIS-LITE\ $ venv\Scripts\activate
+venv\Scripts\activate
 ```
 
 #### **macOS/Linux**:
 
 ```shell
-FAIRIS-LITE$ source venv/bin/activate
+source venv/bin/activate
 ```
 
 You should now see your terminal prompt change to indicate that the virtual environment is active (e.g., `(venv)` at the start of your command line).
 
+---
 
-### 4. Install FAIRIS-Lite Packages
+### 4. Install Required Python Packages
 
-#### a. With the virtual environment activated, install the FAIRIS-Lite packages:
-
-```shell
-pip install -e .
-```
-
-This command will install the `fairis_tools` and `fairis_lib` packages, making all classes and functions available for use in your Webots controllers.
-
-#### b. clean up after the installation of FAIRIS-Lite packages:
+With the virtual environment activated, install all necessary dependencies using:
 
 ```shell
-rm -r fairis_lite.egg-info/ 
+pip install -r requirements.txt
 ```
 
-This command will remove the fairis_lite.egg-info directory that are automatically generated during the 
-installation process.  
+This will install all libraries needed for your Python Virtual environment to run FAIRIS-Lite in Webots.
 
-### 5. Configure Webots
+---
+## Updating Runtime Configurations for New Controllers
 
-You can configure Webots to use the correct Python environment in two ways: by running an automatic script or manually creating the necessary `runtime.ini` files in each controller directory.
-
-#### a. **Automatic Configuration**
-
-Simply run the provided script to automatically create and configure the `runtime.ini` files in all controller directories:
+If you create a **new controller directory** under `WebotsSim/controllers/`, you will need to **re-run** the `add_runtime_ini.py` script to generate the appropriate `runtime.ini` file for that new controller:
 
 ```shell
 python3 add_runtime_ini.py
 ```
 
-This script will:
-- Locate all controller directories under `WebotsSim/controllers/`.
-- Create a `runtime.ini` file in each directory.
-- Set the Python command to the correct virtual environment's Python executable.
-- Note that you will need to run this everytime you create a new robot controller. 
-
-#### b. **Manual Configuration**
-
-If you prefer, you can manually create and configure the `runtime.ini` files. Follow these steps:
-
-1. Navigate to each controller directory under `WebotsSim/controllers/`.
-2. Create a file named `runtime.ini` in each directory.
-3. Add the following content to the `runtime.ini` file:
-
-```ini
-[python]
-COMMAND = path_to_your_venv/bin/python3
-```
+This ensures that Webots knows to use the correct Python interpreter from your virtual environment.
 
 ### Example Directory Structure for Manual Configuration
 
@@ -234,4 +200,5 @@ If everything works as expected, you’re ready to start developing your robot c
 ## Additional Documentation
 
 - **Guide for Webots Controller Creation**: Detailed instructions for creating a new Webots Robot Controller can be found [here](WebotsSim/controllers/README.md).
-- **`RosBot` Library Documentation**: The `RosBot` class, which provides functions to access sensors, motors, and load objects in the simulated environment, is documented [here](fairis_tools/README.md).
+- **`HamBot` Library Documentation**: The `HamBot` class, which provides functions to access sensors, motors, and load 
+  objects in the simulated environment, is documented [here](fairis_tools/README.md).
