@@ -1,6 +1,3 @@
-Here is the full raw Markdown content for the updated `README.md`:
-
-````markdown
 # FAIRIS-Lite
 
 FAIRIS-Lite is a project framework that allows you to implement navigational control logic directly on the open-source robotic simulation platform Webots. With this framework, you can create your own Webots controller without the need to set up a simulated environment or robot, as we provide all the materials required to get started.
@@ -24,9 +21,9 @@ To work with FAIRIS-Lite, ensure that your system meets the following requiremen
 
   5. Once installed, verify the installation by opening Command Prompt and typing:
   
-   ```shell
+```shell
    python3 --version
-````
+```
 
 * This should return `Python 3.10.x` or higher if installed correctly.
 
