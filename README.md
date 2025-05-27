@@ -84,7 +84,10 @@ Clone this repository onto your device. There are numerous ways to achieve this,
 ```shell
 git clone https://github.com/biorobaw/FAIRIS-Lite.git
 ```
-
+ After you clone the Repo, CD into the directory by running 
+```shell
+cd FAIRIS-Lite
+```
 ### 2. Run the Setup Script
 
 Run the provided setup script to configure the project. This script:
@@ -99,6 +102,7 @@ python3 create_venv.py
 ```
 
 You should see output indicating that the venv was created and that the `runtime.ini` files were added.
+
 
 ### 3. Activate Python Virtual Environment
 
