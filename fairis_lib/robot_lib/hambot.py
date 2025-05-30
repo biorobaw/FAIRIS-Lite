@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 from controller import Supervisor
 from fairis_lib.mapping_utils.environment import Maze
 
-# TODO fix this to point at docs on github
 class HamBot(Supervisor):
 
     # Initiilize an instance of Webots Harrison's RosBot

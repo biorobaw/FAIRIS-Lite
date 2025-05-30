@@ -5,16 +5,16 @@ from fairis_tools.my_robot import MyRobot
 robot = MyRobot()
 
 # Loads the environment from the maze file
-maze_files = ['../../worlds/Spring25/maze1.xml',
-              '../../worlds/Spring25/maze2.xml',
-              '../../worlds/Spring25/maze3.xml',
-              '../../worlds/Spring25/maze4.xml',
-              '../../worlds/Spring25/maze5.xml',
-              '../../worlds/Spring25/maze6.xml',
-              '../../worlds/Spring25/maze7.xml',
-              '../../worlds/Spring25/maze8.xml',
-              '../../worlds/Spring25/maze9.xml',
-              '../../worlds/Spring25/maze10.xml'
+maze_files = ['../../worlds/PreviousCourses/Spring25/maze1.xml',
+              '../../worlds/PreviousCourses/Spring25/maze2.xml',
+              '../../worlds/PreviousCourses/Spring25/maze3.xml',
+              '../../worlds/PreviousCourses/Spring25/maze4.xml',
+              '../../worlds/PreviousCourses/Spring25/maze5.xml',
+              '../../worlds/PreviousCourses/Spring25/maze6.xml',
+              '../../worlds/PreviousCourses/Spring25/maze7.xml',
+              '../../worlds/PreviousCourses/Spring25/maze8.xml',
+              '../../worlds/PreviousCourses/Spring25/maze9.xml',
+              '../../worlds/PreviousCourses/Spring25/maze10.xml'
               ]
 
 robot.load_environment(maze_files[-3])
