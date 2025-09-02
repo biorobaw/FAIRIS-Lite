@@ -4,8 +4,16 @@ from fairis_tools.my_robot import MyRobot
 robot = MyRobot()
 
 # Loads the environment from the maze file
-maze_file = '../../worlds/PreviousCourses/Spring25/maze1.xml'
-robot.load_environment(maze_file)
+maze_files = ['../../worlds/Fall25/maze0.xml',
+              '../../worlds/Fall25/maze1.xml',
+              '../../worlds/Fall25/maze2.xml',
+              '../../worlds/Fall25/maze3.xml',
+              '../../worlds/Fall25/maze4.xml',
+              '../../worlds/Fall25/maze5.xml',
+              '../../worlds/Fall25/maze6.xml',
+              '../../worlds/Fall25/maze7.xml'
+              ]
+robot.load_environment(maze_files[0])
 
 # Move robot to a random staring position listed in maze file
 robot.move_to_start()

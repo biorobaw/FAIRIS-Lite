@@ -5,19 +5,16 @@ from fairis_tools.my_robot import MyRobot
 robot = MyRobot()
 
 # Loads the environment from the maze file
-maze_files = ['../../worlds/PreviousCourses/Spring25/maze1.xml',
-              '../../worlds/PreviousCourses/Spring25/maze2.xml',
-              '../../worlds/PreviousCourses/Spring25/maze3.xml',
-              '../../worlds/PreviousCourses/Spring25/maze4.xml',
-              '../../worlds/PreviousCourses/Spring25/maze5.xml',
-              '../../worlds/PreviousCourses/Spring25/maze6.xml',
-              '../../worlds/PreviousCourses/Spring25/maze7.xml',
-              '../../worlds/PreviousCourses/Spring25/maze8.xml',
-              '../../worlds/PreviousCourses/Spring25/maze9.xml',
-              '../../worlds/PreviousCourses/Spring25/maze10.xml'
+maze_files = ['../../worlds/Fall25/maze0.xml',
+              '../../worlds/Fall25/maze1.xml',
+              '../../worlds/Fall25/maze2.xml',
+              '../../worlds/Fall25/maze3.xml',
+              '../../worlds/Fall25/maze4.xml',
+              '../../worlds/Fall25/maze5.xml',
+              '../../worlds/Fall25/maze6.xml',
+              '../../worlds/Fall25/maze7.xml'
               ]
-
-robot.load_environment(maze_files[-3])
+robot.load_environment(maze_files[7])
 
 # Move robot to a random staring position listed in maze file
 robot.move_to_start()
@@ -33,7 +30,7 @@ while robot.experiment_supervisor.step(robot.timestep) != -1:
 
     # Checks to see if the camera detects recognition object
     # (Doc: https://cyberbotics.com/doc/reference/camera?tab-language=python)
-    rec_objects = robot.rgb_camera.getRecognitionObjects()
+    rec_objects = robot.camera.getRecognitionObjects()
 
     # if camera has detected an object
     if len(rec_objects) > 0:
@@ -50,8 +47,8 @@ while robot.experiment_supervisor.step(robot.timestep) != -1:
 
 
     # Sets the robot's motor velocity to 20 rad/sec
-    robot.set_right_motors_velocity(-5)
-    robot.set_left_motors_velocity(5)
+    robot.set_right_motor_velocity(-5)
+    robot.set_left_motor_velocity(5)
 
 
 

@@ -5,7 +5,7 @@ import platform
 
 
 def find_python_version():
-    preferred_order = ["python3.12", "python3.11", "python3.10", "python3"]
+    preferred_order = ["python3.11", "python3.10", "python3"]
 
     for executable in preferred_order:
         try:
