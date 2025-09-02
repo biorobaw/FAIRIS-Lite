@@ -29,9 +29,9 @@ while robot.experiment_supervisor.step(robot.timestep) != -1:
 
     # Reads and Prints Robot's Lidar Readings Relative to Robot's Position
     print("Lidar Front Reading", robot.get_lidar_range_image()[180])
-    print("Lidar Right Reading", robot.get_lidar_range_image()[90])
+    print("Lidar Left Reading", robot.get_lidar_range_image()[90])
     print("Lidar Rear Reading", robot.get_lidar_range_image()[0])
-    print("Lidar Left Reading", robot.get_lidar_range_image()[270])
+    print("Lidar Right Reading", robot.get_lidar_range_image()[270])
     print("Simulation Time", robot.experiment_supervisor.getTime())
 
     # Sets the robot's motor velocity to 18 rad/sec
