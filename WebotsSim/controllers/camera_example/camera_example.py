@@ -12,7 +12,8 @@ maze_files = ['../../worlds/Fall25/maze0.xml',
               '../../worlds/Fall25/maze4.xml',
               '../../worlds/Fall25/maze5.xml',
               '../../worlds/Fall25/maze6.xml',
-              '../../worlds/Fall25/maze7.xml'
+              '../../worlds/Fall25/maze7.xml',
+              '../../worlds/Fall25/maze8.xml'
               ]
 robot.load_environment(maze_files[7])
 
