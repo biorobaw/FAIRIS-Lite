@@ -14,7 +14,7 @@ maze_files = ['../../worlds/Spring26/maze0.xml',
               '../../worlds/Spring26/maze7.xml',
               '../../worlds/Spring26/maze8.xml'
               ]
-robot.load_environment(maze_files[8])
+robot.load_environment(maze_files[0])
 
 # Move robot to a random staring position listed in maze file
 robot.move_to_start()

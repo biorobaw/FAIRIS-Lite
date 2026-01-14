@@ -5,15 +5,15 @@ from fairis_tools.my_robot import MyRobot
 robot = MyRobot()
 
 # Loads the environment from the maze file
-maze_files = ['../../worlds/Fall25/maze0.xml',
-              '../../worlds/Fall25/maze1.xml',
-              '../../worlds/Fall25/maze2.xml',
-              '../../worlds/Fall25/maze3.xml',
-              '../../worlds/Fall25/maze4.xml',
-              '../../worlds/Fall25/maze5.xml',
-              '../../worlds/Fall25/maze6.xml',
-              '../../worlds/Fall25/maze7.xml',
-              '../../worlds/Fall25/maze8.xml'
+maze_files = ['../../worlds/Spring26/maze0.xml',
+              '../../worlds/Spring26/maze1.xml',
+              '../../worlds/Spring26/maze2.xml',
+              '../../worlds/Spring26/maze3.xml',
+              '../../worlds/Spring26/maze4.xml',
+              '../../worlds/Spring26/maze5.xml',
+              '../../worlds/Spring26/maze6.xml',
+              '../../worlds/Spring26/maze7.xml',
+              '../../worlds/Spring26/maze8.xml'
               ]
 robot.load_environment(maze_files[7])
 
