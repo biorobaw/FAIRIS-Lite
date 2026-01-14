@@ -1,39 +1,15 @@
 #VRML_SIM R2025a utf8
-# A modular differential-drive mobile robot designed for research and teaching in robotics.
-# HamBot includes support for visual sensors, lidar, inertial measurement, onboard computation, and display.
-#
-# Features:
-# - Two motorized wheels with encoders and adjustable torque/velocity
-# - Modular sensor components (camera, lidar, IMU, display) defined as external PROTOs
-# - Support for a Raspberry Pi board model and external device integration
-# - Multiple predefined appearances using Webots' built-in PBR and classic materials
-# - Caster wheels and bounding object for realistic ground interaction
-# - Compatible with physics simulation and full sensor interfacing
-# author: Chance J. Hamilton
-
-
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/GlossyPaint.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Rubber.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Plastic.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/BrushedAluminium.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Pcb.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/ScuffedPlastic.proto"
-EXTERNPROTO "IMUComponent.proto"
-EXTERNPROTO "DisplayComponent.proto"
-EXTERNPROTO "CameraComponent.proto"
-EXTERNPROTO "RPiComponent.proto"
-EXTERNPROTO "LidarComponent.proto"
 
 PROTO HamBot [
-  field  SFVec3f     translation     0 0 0
-  field  SFRotation  rotation        0 0 1 1.57
-  field  SFString    name            "HamBot"
-  field  SFString    controller      "Template"
-  field  MFString    controllerArgs  []
-  field  SFString    customData      ""
-  field  SFBool      supervisor      TRUE
-  field  SFBool      synchronization TRUE
-  field  SFBool      selfCollision   FALSE
+  field SFVec3f     translation     0 0 0
+  field SFRotation  rotation        0 0 1 1.57
+  field SFString    name            "HamBot"
+  field SFString    controller      "Template"
+  field MFString    controllerArgs  []
+  field SFString    customData      ""
+  field SFBool      supervisor      TRUE
+  field SFBool      synchronization TRUE
+  field SFBool      selfCollision   FALSE
 ]
 {
   Robot {
@@ -48,187 +24,171 @@ PROTO HamBot [
     selfCollision IS selfCollision
     children [
 
-      # Visual body mesh
-      DEF MAIN_BODY Pose {
-        translation 0.000000 0.000000 0
-        rotation 0.000000 0.000000 1.000000 1.57
+      # HamBot Meshes
+      Pose {
+        translation 0 0 0.04
+        rotation 0 0 1 1.57
         children [
           Shape {
-            appearance Plastic {
-              colorOverride 0.004 0.196 0.078
-              type  "rough"
+            appearance PBRAppearance {
+              baseColor 0.0 0.5 0.2
+              roughness 0.6
+              metalness 0.1
             }
             geometry Mesh {
-              url "models/Body/bottom_layer.obj"
+              url ["models/HamBot/PlasticsGreen.obj"]
             }
+            castShadows TRUE
           }
           Shape {
+            appearance PBRAppearance {
+              baseColor 0.8 0.8 0.8
+              roughness 0.3
+              metalness 0.9
+            }
+            geometry Mesh {
+              url ["models/HamBot/MetalSilver.obj"]
+            }
+            castShadows TRUE
+          }
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.8 0.8 0.8
+              roughness 0.3
+              metalness 0.9
+            }
+            geometry Mesh {
+              url ["models/HamBot/MetalSilverShadow.obj"]
+            }
+            castShadows TRUE
+          }
+          Shape {
+            appearance PBRAppearance {
+              baseColor 1.0 0.843 0.0
+              roughness 0.4
+              metalness 1.0
+            }
+            geometry Mesh {
+              url ["models/HamBot/MetalGold.obj"]
+            }
+            castShadows TRUE
+          }
+          Shape {
+            appearance PBRAppearance {
+              baseColor 1.0 0.843 0.0
+              roughness 0.4
+              metalness 1.0
+            }
+            geometry Mesh {
+              url ["models/HamBot/MetalGold.obj"]
+            }
+            castShadows TRUE
+          }
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.1 0.1 0.1
+              roughness 0.6
+              metalness 0.2
+            }
+            geometry Mesh {
+              url ["models/HamBot/GlossyBlack.obj"]
+            }
+            castShadows TRUE
+          }
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.1 0.1 0.1
+              roughness 0.6
+              metalness 0.2
+            }
+            geometry Mesh {
+              url ["models/HamBot/LidarShell1.obj"]
+            }
             castShadows FALSE
-            appearance Plastic {
-              colorOverride 0.004 0.196 0.078
-              type  "rough"
-            }
-            geometry Mesh {
-              url "models/Body/top_layer.obj"
-            }
           }
           Shape {
-            appearance Plastic {
-              colorOverride 0.004 0.196 0.078
-              type  "rough"
+            appearance PBRAppearance {
+              baseColor 0.1 0.1 0.1
+              roughness 0.6
+              metalness 0.2
             }
             geometry Mesh {
-              url "models/Body/battery_slot.obj"
+              url ["models/HamBot/LidarShell2.obj"]
             }
+            castShadows TRUE
           }
           Shape {
-            appearance BrushedAluminium {
-              colorOverride 1.0 0.843 0.0
+            appearance PBRAppearance {
+              baseColor 0.1 0.1 0.1
+              roughness 0.6
+              metalness 0.0
             }
             geometry Mesh {
-              url "models/Body/chassis_pillar_1.obj"
+              url ["models/HamBot/PlasticBlackShadow.obj"]
             }
+            castShadows TRUE
           }
           Shape {
-            appearance BrushedAluminium {
-              colorOverride 1.0 0.843 0.0
+            appearance PBRAppearance {
+              baseColor 0.9 0.9 0.9
+              roughness 0.3
+              metalness 0.0
             }
             geometry Mesh {
-              url "models/Body/chassis_pillar_2.obj"
+              url ["models/HamBot/PlasticWhite.obj"]
             }
+            castShadows FALSE
           }
           Shape {
-            appearance BrushedAluminium {
-              colorOverride 1.0 0.843 0.0
+            appearance PBRAppearance {
+              baseColor 1.0 0.0 0.0
+              roughness 0.5
+              metalness 0.1
             }
             geometry Mesh {
-              url "models/Body/chassis_pillar_3.obj"
+              url ["models/HamBot/Glossy Red.obj"]
             }
+            castShadows TRUE
           }
           Shape {
-            appearance BrushedAluminium {
-              colorOverride 1.0 0.843 0.0
+            appearance PBRAppearance {
+              baseColor 0.0 0.5 0.0
+              roughness 0.4
+              metalness 0.0
             }
             geometry Mesh {
-              url "models/Body/chassis_pillar_4.obj"
+              url ["models/HamBot/PCB.obj"]
             }
+            castShadows TRUE
           }
           Shape {
-            appearance BrushedAluminium {
-              colorOverride 1.0 0.843 0.0
+            appearance PBRAppearance {
+              baseColor 0.05 0.05 0.05
+              roughness 0.8
+              metalness 0.1
             }
             geometry Mesh {
-              url "models/Body/RPI_pillar_1.obj"
+              url ["models/HamBot/PlasticsBlack.obj"]
             }
+            castShadows TRUE
           }
           Shape {
-            appearance BrushedAluminium {
-              colorOverride 1.0 0.843 0.0
+            appearance PBRAppearance {
+              baseColor 0.05 0.05 0.05
+              roughness 0.7
             }
             geometry Mesh {
-              url "models/Body/RPI_pillar_2.obj"
+              url ["models/HamBot/Rubber.obj"]
             }
-          }
-          Shape {
-            appearance BrushedAluminium {
-              colorOverride 1.0 0.843 0.0
-            }
-            geometry Mesh {
-              url "models/Body/RPI_pillar_3.obj"
-            }
-          }
-          Shape {
-            appearance BrushedAluminium {
-              colorOverride 1.0 0.843 0.0
-            }
-            geometry Mesh {
-              url "models/Body/RPI_pillar_4.obj"
-            }
-          }
-          Shape {
-            appearance BrushedAluminium {
-              colorOverride 0.0 0.0 0.0
-            }
-            geometry Mesh {
-              url "models/Body/caster_1.obj"
-            }
-          }
-          Shape {
-            appearance BrushedAluminium {
-              colorOverride 0.0 0.0 0.0
-            }
-            geometry Mesh {
-              url "models/Body/caster_2.obj"
-            }
-          }
-
-
-          Shape {
-            appearance ScuffedPlastic {
-              colorOverride 1.0 1.0 1.0
-            }
-            geometry Mesh {
-              url "models/Body/motor_l.obj"
-            }
-          }
-          Shape {
-            appearance ScuffedPlastic {
-              colorOverride 1.0 1.0 1.0
-            }
-            geometry Mesh {
-              url "models/Body/motor_r.obj"
-            }
-          }
-          Shape {
-            appearance ScuffedPlastic {
-              colorOverride 0.004 0.196 0.078
-            }
-            geometry Mesh {
-              url "models/Body/hub_l.obj"
-            }
-          }
-          Shape {
-            appearance ScuffedPlastic {
-              colorOverride 0.004 0.196 0.078
-            }
-            geometry Mesh {
-              url "models/Body/hub_r.obj"
-            }
-          }
-          Shape {
-            appearance ScuffedPlastic {
-              colorOverride 0.0 0.0 0.0
-            }
-            geometry Mesh {
-              url "models/Body/battery.obj"
-            }
-          }
-          IMUComponent {
-            translation 0.0 0.0 0.0
-            rotation 1 0 0 0
-          }
-          DisplayComponent{
-            translation 0.0 0.0 0.0
-            rotation 1 0 0 0
-          }
-          CameraComponent{
-            translation 0.0 0.0 0.0
-            rotation 1 0 0 0
-          }
-          RPiComponent{
-            translation 0.0 0.0 0.0
-            rotation 1 0 0 0
-          }
-          LidarComponent{
-            translation 0.0 0.0 0.0
-            rotation 1 0 0 0
+            castShadows TRUE
           }
         ]
       }
+
       # Left Wheel
       HingeJoint {
         jointParameters HingeJointParameters {
-          axis 0.000000 1.000000 0.000000
+          axis 0 1 0
           anchor 0.0 0.0 0.012
           dampingConstant 5.0
           staticFriction 1.0
@@ -236,57 +196,55 @@ PROTO HamBot [
         device [
           RotationalMotor {
             name "left motor"
-            maxVelocity 18
-            maxTorque 100
+            maxVelocity 20
+            maxTorque 110
           }
           PositionSensor {
             name "left wheel encoder"
           }
         ]
         endPoint Solid {
-          translation 0.0 0.00000 0.00
-          rotation 0.000000 0.000000 1.000000 1.57
+          translation 0.0 0.0 0.0
+          rotation 0 0 1 0
           children [
             Pose {
-              translation 0.0900 -0.00011 0.012
-              rotation 0.000000 0.000000 1.000000 3.14
+              translation 0 0.0865 0.012
+              rotation 0 0 1 -1.57
               children [
-                DEF RIM_AND_TIRE_SHAPES Group {
-                  children [
-                    DEF TIRE_SHAPE Shape {
-                      appearance Rubber {
-                        type "flat"
-                      }
-                      geometry Mesh {
-                        url "models/Body/Wheel.obj"
-                      }
-                    }
-                  ]
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.05 0.05 0.05
+                    roughness 0.7
+                  }
+                  geometry Mesh {
+                    url [ "models/HamBot/Wheel.obj" ]
+                  }
                 }
               ]
             }
           ]
           name "left wheel"
-          boundingObject DEF LEFT_WHEEL_CYLINDER Pose {
-            translation 0.0900 -0.00011 0.012
-            rotation 0.000000 1.000000 0.000000 1.57
+          boundingObject Pose {
+            translation 0 0.0865 0.012
+            rotation 1 0 0 1.57
             children [
-              DEF WHEEL_CYLINDER Cylinder {
+              Cylinder {
                 height 0.01
                 radius 0.045
               }
             ]
           }
-          physics DEF WHEEL_PHYSICS Physics {
+          physics Physics {
             density -1
             mass 0.0005
           }
         }
       }
+
       # Right Wheel
       HingeJoint {
         jointParameters HingeJointParameters {
-          axis 0.000000 1.000000 0.000000
+          axis 0 1 0
           anchor 0.0 0.0 0.012
           dampingConstant 5.0
           staticFriction 1.0
@@ -294,159 +252,169 @@ PROTO HamBot [
         device [
           RotationalMotor {
             name "right motor"
-            maxVelocity 18
-            maxTorque 100
+            maxVelocity 20
+            maxTorque 110
           }
           PositionSensor {
             name "right wheel encoder"
           }
         ]
         endPoint Solid {
-          translation 0.0 0.00000 0.00
-          rotation 0.000000 0.000000 1.000000 1.57
+          translation 0 0 0
+          rotation 1 0 0 0
           children [
             Pose {
-              translation -0.0900 -0.00011 0.012
-              rotation 0.000000 0.000000 1.000000 0.0
+              translation 0.0 -0.0911 0.012
+              rotation 0 0 1 1.57
               children [
-                DEF RIM_AND_TIRE_SHAPES Group {
-                  children [
-                    DEF TIRE_SHAPE Shape {
-                      appearance Rubber {
-                        type "flat"
-                      }
-                      geometry Mesh {
-                        url "models/Body/Wheel.obj"
-                      }
-                    }
-                  ]
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.05 0.05 0.05
+                    roughness 0.7
+                  }
+                  geometry Mesh {
+                    url [ "models/HamBot/Wheel.obj" ]
+                  }
                 }
               ]
             }
           ]
           name "right wheel"
-          boundingObject DEF RIGHT_WHEEL_CYLINDER Pose {
-            translation -0.0900 -0.00011 0.012
-            rotation 0.000000 1.000000 0.000000 1.57
+          boundingObject Pose {
+            translation 0.0 -0.0911 0.012
+            rotation 1 0 0 1.57
             children [
-              DEF WHEEL_CYLINDER Cylinder {
+              Cylinder {
                 height 0.01
                 radius 0.045
               }
             ]
           }
-          physics DEF WHEEL_PHYSICS Physics {
+          physics Physics {
             density -1
             mass 0.0005
           }
         }
       }
+
       InertialUnit {
-        translation 0.0 0.0 0.00
-        rotation 0.000000 0.000000 1.000000 0
         name "imu"
+        translation 0 0 0
       }
+
       Camera {
-        translation           0.079 0.0 0.08
-        rotation              0 0 1 0
-        name                  "camera"
-        fieldOfView           0.7854
-        width                 640
-        height                480
+        name "camera"
+        translation  0.09 0.0 0.08
+        rotation 0 0 1 0
+        fieldOfView 0.7854
+        width 224
+        height 224
         recognitionColors [
           1 0 0,
           0 1 0,
           0 0 1,
           1 1 0
         ]
-        recognition Recognition {
-        }
+        recognition Recognition { }
       }
+
       Lidar {
-        translation 0 0 .13
         name "lidar"
+        translation 0 0 0.13
+        rotation 0 0 1 0
         fieldOfView 6.283184
         horizontalResolution 360
         numberOfLayers 1
         near 0.05
-        defaultFrequency 12
-        minRange 0.0700000
-        maxRange 3.000000
+        minRange 0.05
+        maxRange 12.0
         noise 0.000833
-        resolution -1
-        type "rotating"
+        resolution 0.01
+        type "fixed"
       }
+
       GPS {
         name "gps"
       }
+
       Display {
-        width 64
-        height 64
-        name "User Display"
+        name "Place Cell Display"
+        width 800
+        height 800
       }
 
-      DEF CASTER_JOINT_REAR BallJoint {
-        jointParameters BallJointParameters {
-          anchor -0.063 -0.001 -0.021
-        }
-        endPoint Solid {
-          name "Front"
-          translation -0.063 -0.001 -0.021
-          children [
-            Shape {
-
-              appearance PBRAppearance {
-              }
-              geometry DEF CASTER_SPHERE_REAR Sphere {
-                radius 0.0109
-                subdivision 2
-              }
+      Solid {
+        name "caster_rear"
+        translation -0.0835 -0.002 -0.021
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 1 1 1
+              roughness 0.6
+              metalness 0.9
             }
-          ]
-          boundingObject USE CASTER_SPHERE_REAR
-          physics Physics {
+            geometry DEF CASTER_SPHERE_REAR Sphere {
+              radius 0.0109
+              subdivision 4
+            }
+          }
+        ]
+        boundingObject USE CASTER_SPHERE_REAR
+        physics Physics {
+          damping Damping {
+            linear 0.1
+            angular 0.1
           }
         }
+        contactMaterial "casterWheel"
       }
-      DEF CASTER_JOINT_FRONT BallJoint {
-        jointParameters BallJointParameters {
-          anchor 0.0635 -0.000 -0.021
-        }
-        endPoint Solid {
 
-          translation 0.0635 -0.000 -0.021
-          children [
-            Shape {
-              appearance PBRAppearance {
-              }
-              geometry DEF CASTER_SPHERE_FRONT Sphere {
-                radius 0.0109
-                subdivision 2
-              }
+      Solid {
+        name "caster_front"
+        translation 0.0835 -0.002 -0.021
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 1 1 1
+              roughness 0.6
+              metalness 0.9
             }
-          ]
-          boundingObject USE CASTER_SPHERE_FRONT
-          physics Physics {
+            geometry DEF CASTER_SPHERE_FRONT Sphere {
+              radius 0.0109
+              subdivision 4
+            }
+          }
+        ]
+        boundingObject USE CASTER_SPHERE_FRONT
+        physics Physics {
+          damping Damping {
+            linear 0.1
+            angular 0.1
           }
         }
+        contactMaterial "casterWheel"
       }
+
+
+
     ]
 
     boundingObject Group {
       children [
         Pose {
-          translation 0.0 0.0 0.056
+          translation 0.0 0.0 0.06
           children [
             Box {
-              size 0.15 0.14 0.171
+              size 0.19 0.15 0.171
             }
           ]
         }
       ]
     }
+
     physics Physics {
       density -1
-      mass 0.2260000
+      mass 0.226
     }
   }
 }

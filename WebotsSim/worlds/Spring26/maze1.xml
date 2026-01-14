@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<world>
+
+
+
+    <!-- Starting and goal positions -->
+    <startPositions>
+        <pos x="0.0" y="0.0" theta="1.57" />
+    </startPositions>
+    <goal id="1" x="1.5" y="2.0" />
+
+</world>

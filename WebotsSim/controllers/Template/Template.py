@@ -4,20 +4,22 @@ from fairis_tools.my_robot import MyRobot
 robot = MyRobot()
 
 # Loads the environment from the maze file
-maze_files = ['../../worlds/Fall25/maze0.xml',
-              '../../worlds/Fall25/maze1.xml',
-              '../../worlds/Fall25/maze2.xml',
-              '../../worlds/Fall25/maze3.xml',
-              '../../worlds/Fall25/maze4.xml',
-              '../../worlds/Fall25/maze5.xml',
-              '../../worlds/Fall25/maze6.xml',
-              '../../worlds/Fall25/maze7.xml',
-              '../../worlds/Fall25/maze8.xml'
+maze_files = ['../../worlds/Spring26/maze0.xml',
+              '../../worlds/Spring26/maze1.xml',
+              '../../worlds/Spring26/maze2.xml',
+              '../../worlds/Spring26/maze3.xml',
+              '../../worlds/Spring26/maze4.xml',
+              '../../worlds/Spring26/maze5.xml',
+              '../../worlds/Spring26/maze6.xml',
+              '../../worlds/Spring26/maze7.xml',
+              '../../worlds/Spring26/maze8.xml'
               ]
-robot.load_environment(maze_files[0])
+robot.load_environment(maze_files[8])
 
 # Move robot to a random staring position listed in maze file
 robot.move_to_start()
+
+start_time = robot.experiment_supervisor.getTime()
 
 # Main Control Loop for Robot
 while robot.experiment_supervisor.step(robot.timestep) != -1:
@@ -41,10 +43,11 @@ while robot.experiment_supervisor.step(robot.timestep) != -1:
 
     # Calculates distance the wheel has turned since beginning of simulation
     distance_left_wheel_traveled = robot.wheel_radius * robot.get_left_motor_encoder_reading()
-    robot.experiment_supervisor.getTime()
+    travel_time = robot.experiment_supervisor.getTime() - start_time
 
     # Stops the robot after the robot moves a distance of 1.5 meters
-    if robot.experiment_supervisor.getTime() > 1.85:
+    if distance_left_wheel_traveled > 1.5:
+        print(f"Time to travel 1.5 meters:{travel_time:.2f}")
         robot.stop()
         break
 

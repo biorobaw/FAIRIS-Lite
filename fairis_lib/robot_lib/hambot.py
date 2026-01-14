@@ -12,10 +12,6 @@ class HamBot(Supervisor):
         # Inherent from Webots Robot Class: https://cyberbotics.com/doc/reference/robot
         self.experiment_supervisor = Supervisor()
 
-        # Add a display to plot the place cells as they are generated
-        self.display = self.experiment_supervisor.getDevice('User Display')
-        self.display.setOpacity(1.0)
-
         # Sets Supervisor Root Nodes
         self.root_node = self.experiment_supervisor.getRoot()
         self.children_field = self.root_node.getField('children')
@@ -169,11 +165,4 @@ class HamBot(Supervisor):
         self.starting_position = starting_position
         self.teleport_robot(starting_position.x, starting_position.y,theta=starting_position.theta)
 
-    # Plots Place cells and shows them on the Display
-    def update_display(self, fig):
-        fig.savefig('DisplayCache/temp.png')
-        plt.close(fig)
-        while self.experiment_supervisor.step(self.timestep) != -1:
-            ir = self.display.imageLoad('DisplayCache/temp.png')
-            self.display.imagePaste(ir, 0, 0, True)
-            break
+
