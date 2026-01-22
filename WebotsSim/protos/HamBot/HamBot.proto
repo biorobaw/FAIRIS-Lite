@@ -225,7 +225,7 @@ PROTO HamBot [
           ]
           name "left wheel"
           boundingObject Pose {
-            translation 0 0.0865 0.012
+            translation 0 0.092 0.012
             rotation 1 0 0 1.57
             children [
               Cylinder {
@@ -281,7 +281,7 @@ PROTO HamBot [
           ]
           name "right wheel"
           boundingObject Pose {
-            translation 0.0 -0.0911 0.012
+            translation 0.0 -0.092 0.012
             rotation 1 0 0 1.57
             children [
               Cylinder {
