@@ -84,7 +84,7 @@ class HamBot(Supervisor):
         bearing = math.degrees(compass_reading[-1])
         if bearing < 0.0:
             bearing += 360.0
-        return round(bearing)
+        return bearing
 
     # Reads current encoder readings and return an array of encoder positions:
     #   [left, right]
