@@ -189,44 +189,37 @@ PROTO HamBot [
       HingeJoint {
         jointParameters HingeJointParameters {
           axis 0 1 0
-          anchor 0.0 0.0 0.012
-          dampingConstant 5.0
+          anchor 0 0.0865 0.012
+          dampingConstant 0.5
           staticFriction 1.0
         }
         device [
           RotationalMotor {
             name "left motor"
             maxVelocity 20
-            maxTorque 110
+            maxTorque 50
           }
           PositionSensor {
             name "left wheel encoder"
           }
         ]
         endPoint Solid {
-          translation 0.0 0.0 0.0
-          rotation 0 0 1 0
+          translation 0 0.0865 0.012
+          rotation 0 0 1 -1.57
           children [
-            Pose {
-              translation 0 0.0865 0.012
-              rotation 0 0 1 -1.57
-              children [
-                Shape {
-                  appearance PBRAppearance {
-                    baseColor 0.05 0.05 0.05
-                    roughness 0.7
-                  }
-                  geometry Mesh {
-                    url [ "models/HamBot/Wheel.obj" ]
-                  }
-                }
-              ]
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.05 0.05
+                roughness 0.7
+              }
+              geometry Mesh {
+                url [ "models/HamBot/Wheel.obj" ]
+              }
             }
           ]
           name "left wheel"
           boundingObject Pose {
-            translation 0 0.092 0.012
-            rotation 1 0 0 1.57
+            rotation 0 1 0 1.57
             children [
               Cylinder {
                 height 0.01
@@ -236,7 +229,7 @@ PROTO HamBot [
           }
           physics Physics {
             density -1
-            mass 0.0005
+            mass 0.05
           }
         }
       }
@@ -245,44 +238,37 @@ PROTO HamBot [
       HingeJoint {
         jointParameters HingeJointParameters {
           axis 0 1 0
-          anchor 0.0 0.0 0.012
-          dampingConstant 5.0
+          anchor 0 -0.0911 0.012
+          dampingConstant 0.5
           staticFriction 1.0
         }
         device [
           RotationalMotor {
             name "right motor"
             maxVelocity 20
-            maxTorque 110
+            maxTorque 50
           }
           PositionSensor {
             name "right wheel encoder"
           }
         ]
         endPoint Solid {
-          translation 0 0 0
-          rotation 1 0 0 0
+          translation 0 -0.0911 0.012
+          rotation 0 0 1 1.57
           children [
-            Pose {
-              translation 0.0 -0.0911 0.012
-              rotation 0 0 1 1.57
-              children [
-                Shape {
-                  appearance PBRAppearance {
-                    baseColor 0.05 0.05 0.05
-                    roughness 0.7
-                  }
-                  geometry Mesh {
-                    url [ "models/HamBot/Wheel.obj" ]
-                  }
-                }
-              ]
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.05 0.05
+                roughness 0.7
+              }
+              geometry Mesh {
+                url [ "models/HamBot/Wheel.obj" ]
+              }
             }
           ]
           name "right wheel"
           boundingObject Pose {
-            translation 0.0 -0.092 0.012
-            rotation 1 0 0 1.57
+            rotation 0 1 0 1.57
             children [
               Cylinder {
                 height 0.01
@@ -292,7 +278,7 @@ PROTO HamBot [
           }
           physics Physics {
             density -1
-            mass 0.0005
+            mass 0.05
           }
         }
       }
